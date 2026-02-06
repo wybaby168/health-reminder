@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap rescap">
+
+  <Identity Name="HealthReminder.Windows" Publisher="CN=HealthReminder" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>健康提醒</DisplayName>
+    <PublisherDisplayName>HealthReminder</PublisherDisplayName>
+    <Logo>Assets\AppIcon.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="zh-CN" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="健康提醒"
+        Description="健康提醒"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\AppIcon.png"
+        Square44x44Logo="Assets\AppIcon.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\AppIcon.png" />
+      </uap:VisualElements>
+
+      <Extensions>
+        <uap:Extension Category="windows.startupTask" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+          <uap:StartupTask TaskId="HealthReminderStartup" Enabled="false" DisplayName="健康提醒" />
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
