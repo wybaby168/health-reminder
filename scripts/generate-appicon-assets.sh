@@ -5,7 +5,7 @@ INPUT_PNG="${1:-}"
 OUTPUT_ASSETSCAR="${2:-}"
 
 if [[ -z "${INPUT_PNG}" || -z "${OUTPUT_ASSETSCAR}" ]]; then
-  echo "Usage: scripts/generate-appicon-assets.sh <origin.png> <Assets.car>" >&2
+  echo "Usage: scripts/generate-appicon-assets.sh <icons/app-icon.png> <Assets.car>" >&2
   exit 2
 fi
 

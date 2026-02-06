@@ -5,7 +5,7 @@ INPUT_PNG="${1:-}"
 OUTPUT_ICNS="${2:-}"
 
 if [[ -z "${INPUT_PNG}" || -z "${OUTPUT_ICNS}" ]]; then
-  echo "Usage: scripts/generate-appicon.sh <origin.png> <output.icns>" >&2
+  echo "Usage: scripts/generate-appicon.sh <icons/app-icon.png> <output.icns>" >&2
   exit 2
 fi
 
@@ -40,4 +40,3 @@ mkdir -p "$(dirname "${OUTPUT_ICNS}")"
 iconutil -c icns "${ICONSET_DIR}" -o "${OUTPUT_ICNS}"
 
 echo "Generated: ${OUTPUT_ICNS}"
-

@@ -64,5 +64,5 @@ WinUI 3 的 Toast 与 StartupTask 在 MSIX 环境下更符合预期。你可以�
 ## 说明
 
 - 该项目默认使用 `Assets/AppIcon.png` 作为图标源（请替换为你的 icon）。
-- 默认会复用仓库根目录的 `z.png` 作为 `Assets/AppIcon.png`（你也可以自行替换）。
+- 默认会复用仓库根目录的 `icons/app-icon.png` 作为 `Assets/AppIcon.png`（你也可以自行替换）。
 - 托盘图标与 toast 图标在 Windows 上更依赖 MSIX 打包与资源路径。建议使用 VS 的打包/发布流程生成 MSIX。

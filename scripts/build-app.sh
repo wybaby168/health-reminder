@@ -6,7 +6,7 @@ BUNDLE_ID="com.wangyu.healthreminder"
 VERSION="1.0"
 BUILD_CONFIGURATION="debug"
 
-ICON_PNG="z.png"
+ICON_PNG="icons/app-icon.png"
 ICON_ICNS=".build/AppIcon.icns"
 ASSETS_CAR=".build/Assets.car"
 ICON_SOURCE_PNG=".build/AppIconSource.png"

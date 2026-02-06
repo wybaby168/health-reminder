@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
-    <Content Include="..\..\..\z.png" Link="Assets\AppIcon.png" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\..\icons\app-icon.png" Link="Assets\AppIcon.png" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

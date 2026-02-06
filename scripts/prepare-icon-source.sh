@@ -5,7 +5,7 @@ INPUT_PNG="${1:-}"
 OUTPUT_PNG="${2:-}"
 
 if [[ -z "${INPUT_PNG}" || -z "${OUTPUT_PNG}" ]]; then
-  echo "Usage: scripts/prepare-icon-source.sh <z.png> <output.png>" >&2
+  echo "Usage: scripts/prepare-icon-source.sh <icons/app-icon.png> <output.png>" >&2
   exit 2
 fi
 
@@ -36,4 +36,3 @@ fi
 /usr/bin/sips -z 1024 1024 "${OUTPUT_PNG}" --out "${OUTPUT_PNG}" >/dev/null
 
 echo "Prepared: ${OUTPUT_PNG}"
-

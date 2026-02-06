@@ -21,7 +21,7 @@
 
 SwiftPM 直接 `swift run` 运行时不是 `.app` 进程，系统通知可能不可用；请按下面方式打包后运行。
 
-应用图标默认使用项目根目录的 `z.png`，打包时会先用 macOS 官方工具 `sips` 规范化为 1024×1024 源图，再用 `iconutil/actool` 生成并写入 `.app`（`AppIcon.icns` + `Assets.car`）。
+应用图标默认使用 `icons/app-icon.png`，打包时会先用 macOS 官方工具 `sips` 规范化为 1024×1024 源图，再用 `iconutil/actool` 生成并写入 `.app`（`AppIcon.icns` + `Assets.car`）。
 
 ### 生成 DMG 安装包
 
