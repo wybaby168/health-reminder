@@ -8,61 +8,60 @@
 
     <ScrollViewer>
         <StackPanel Padding="20" Spacing="16">
-            <TextBlock Text="设置" FontSize="32" FontWeight="SemiBold" />
-            <TextBlock Text="默认参考：分次补水、久坐不超过 30–60 分钟、20-20-20 规则。" Foreground="Gray" />
+            <TextBlock x:Name="HeaderTitle" FontSize="32" FontWeight="SemiBold" />
+            <TextBlock x:Name="HeaderSubtitle" Foreground="Gray" />
 
             <StackPanel Spacing="10">
-                <TextBlock Text="提醒项目" FontWeight="SemiBold" />
-                <ToggleSwitch x:Name="WaterToggle" Header="喝水提醒" />
-                <ToggleSwitch x:Name="StandToggle" Header="站立提醒" />
-                <ToggleSwitch x:Name="EyesToggle" Header="放松眼睛提醒" />
+                <TextBlock x:Name="SectionReminders" FontWeight="SemiBold" />
+                <ToggleSwitch x:Name="WaterToggle" />
+                <ToggleSwitch x:Name="StandToggle" />
+                <ToggleSwitch x:Name="EyesToggle" />
             </StackPanel>
 
             <StackPanel Spacing="10">
-                <TextBlock Text="间隔（分钟）" FontWeight="SemiBold" />
-                <NumberBox x:Name="WaterInterval" Header="喝水间隔" Minimum="15" Maximum="180" SmallChange="5" />
-                <NumberBox x:Name="StandInterval" Header="站立间隔" Minimum="20" Maximum="120" SmallChange="5" />
-                <NumberBox x:Name="EyesInterval" Header="眼睛休息间隔" Minimum="10" Maximum="60" SmallChange="5" />
+                <TextBlock x:Name="SectionIntervals" FontWeight="SemiBold" />
+                <NumberBox x:Name="WaterInterval" Minimum="15" Maximum="180" SmallChange="5" />
+                <NumberBox x:Name="StandInterval" Minimum="20" Maximum="120" SmallChange="5" />
+                <NumberBox x:Name="EyesInterval" Minimum="10" Maximum="60" SmallChange="5" />
             </StackPanel>
 
             <StackPanel Spacing="10">
-                <TextBlock Text="活跃时段" FontWeight="SemiBold" />
+                <TextBlock x:Name="SectionActive" FontWeight="SemiBold" />
                 <StackPanel Orientation="Horizontal" Spacing="12">
-                    <TimePicker x:Name="ActiveStart" Header="开始" />
-                    <TimePicker x:Name="ActiveEnd" Header="结束" />
+                    <TimePicker x:Name="ActiveStart" />
+                    <TimePicker x:Name="ActiveEnd" />
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Spacing="10">
-                <TextBlock Text="喝水用量" FontWeight="SemiBold" />
-                <NumberBox x:Name="DailyGoal" Header="每日目标 (ml)" Minimum="1200" Maximum="4000" SmallChange="100" />
-                <NumberBox x:Name="DosePerTap" Header="每次记录 (ml)" Minimum="80" Maximum="400" SmallChange="20" />
-                <NumberBox x:Name="TapCooldown" Header="防连点间隔 (秒)" Minimum="30" Maximum="600" SmallChange="30" />
+                <TextBlock x:Name="SectionWater" FontWeight="SemiBold" />
+                <NumberBox x:Name="DailyGoal" Minimum="1200" Maximum="4000" SmallChange="100" />
+                <NumberBox x:Name="DosePerTap" Minimum="80" Maximum="400" SmallChange="20" />
+                <NumberBox x:Name="TapCooldown" Minimum="30" Maximum="600" SmallChange="30" />
 
                 <TextBlock x:Name="WaterProgress" Foreground="Gray" />
-                <Button x:Name="LogWaterButton" Click="OnLogWater">我已喝完一杯</Button>
+                <Button x:Name="LogWaterButton" Click="OnLogWater" />
             </StackPanel>
 
             <StackPanel Spacing="10">
-                <TextBlock Text="强制休息" FontWeight="SemiBold" />
-                <ToggleSwitch x:Name="StandOverlayToggle" Header="站立时全屏遮罩（至少 2 分钟）" />
-                <ToggleSwitch x:Name="EyesOverlayToggle" Header="护眼时黑屏休息（至少 20 秒）" />
+                <TextBlock x:Name="SectionForce" FontWeight="SemiBold" />
+                <ToggleSwitch x:Name="StandOverlayToggle" />
+                <ToggleSwitch x:Name="EyesOverlayToggle" />
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Click="OnStartStand">立即开始站立</Button>
-                    <Button Click="OnStartEyes">立即开始护眼</Button>
+                    <Button x:Name="StartStandButton" Click="OnStartStand" />
+                    <Button x:Name="StartEyesButton" Click="OnStartEyes" />
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Spacing="10">
-                <TextBlock Text="系统" FontWeight="SemiBold" />
-                <ToggleSwitch x:Name="SoundToggle" Header="通知声音" />
-                <ToggleSwitch x:Name="LaunchToggle" Header="开机启动（需要 MSIX 打包）" />
+                <TextBlock x:Name="SectionSystem" FontWeight="SemiBold" />
+                <ToggleSwitch x:Name="SoundToggle" />
+                <ToggleSwitch x:Name="LaunchToggle" />
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Click="OnTestToast">发送测试通知</Button>
-                    <Button Click="OnReset">恢复默认</Button>
+                    <Button x:Name="TestToastButton" Click="OnTestToast" />
+                    <Button x:Name="ResetButton" Click="OnReset" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Window>
-

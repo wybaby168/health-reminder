@@ -39,19 +39,19 @@ public static class ToastNotificationService
             .AddArgument("type", type.ToString().ToLowerInvariant());
 
         builder.AddButton(new ToastButton()
-            .SetContent(type == ReminderType.Water ? "我已喝完" : type == ReminderType.Stand ? "开始 2 分钟站立" : "开始护眼休息")
+            .SetContent(type == ReminderType.Water ? Localizer.Get("Toast_Action_WaterDone") : type == ReminderType.Stand ? Localizer.Get("Toast_Action_StartStand") : Localizer.Get("Toast_Action_StartEyes"))
             .AddArgument("action", type == ReminderType.Water ? "water_done" : type == ReminderType.Stand ? "start_stand" : "start_eyes")
             .AddArgument("type", type.ToString().ToLowerInvariant())
             .SetBackgroundActivation());
 
         builder.AddButton(new ToastButton()
-            .SetContent("稍后 10 分钟")
+            .SetContent(Localizer.Get("Toast_Action_Snooze10"))
             .AddArgument("action", "snooze10")
             .AddArgument("type", type.ToString().ToLowerInvariant())
             .SetBackgroundActivation());
 
         builder.AddButton(new ToastButton()
-            .SetContent("打开设置")
+            .SetContent(Localizer.Get("Toast_Action_Settings"))
             .AddArgument("action", "settings")
             .SetBackgroundActivation());
 

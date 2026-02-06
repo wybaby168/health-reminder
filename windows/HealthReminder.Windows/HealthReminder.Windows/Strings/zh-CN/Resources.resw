@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="AppTitle" xml:space="preserve">
+    <value>健康提醒</value>
+  </data>
+
+  <data name="Menu_Pause60" xml:space="preserve">
+    <value>暂停 60 分钟</value>
+  </data>
+  <data name="Menu_Resume" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="Menu_OpenSettings" xml:space="preserve">
+    <value>打开设置</value>
+  </data>
+  <data name="Menu_Quit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Menu_WaterStatus" xml:space="preserve">
+    <value>喝水：下次 {0} · 今日 {1}/{2} ml</value>
+  </data>
+  <data name="Menu_StandStatus" xml:space="preserve">
+    <value>站立：下次 {0}</value>
+  </data>
+  <data name="Menu_EyesStatus" xml:space="preserve">
+    <value>护眼：下次 {0}</value>
+  </data>
+  <data name="Menu_WaterDone" xml:space="preserve">
+    <value>我已喝完</value>
+  </data>
+  <data name="Menu_WaterDoneCooldown" xml:space="preserve">
+    <value>我已喝完（{0}s）</value>
+  </data>
+  <data name="Menu_WaterSnooze10" xml:space="preserve">
+    <value>喝水稍后 10 分钟</value>
+  </data>
+  <data name="Menu_StandSnooze10" xml:space="preserve">
+    <value>站立稍后 10 分钟</value>
+  </data>
+  <data name="Menu_EyesSnooze10" xml:space="preserve">
+    <value>护眼稍后 10 分钟</value>
+  </data>
+
+  <data name="Settings_Title" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Settings_Subtitle" xml:space="preserve">
+    <value>默认参考：分次补水、久坐不超过 30–60 分钟、20-20-20 规则。</value>
+  </data>
+  <data name="Settings_Section_Reminders" xml:space="preserve">
+    <value>提醒项目</value>
+  </data>
+  <data name="Settings_Section_Intervals" xml:space="preserve">
+    <value>间隔（分钟）</value>
+  </data>
+  <data name="Settings_Section_Active" xml:space="preserve">
+    <value>活跃时段</value>
+  </data>
+  <data name="Settings_Section_Water" xml:space="preserve">
+    <value>喝水用量</value>
+  </data>
+  <data name="Settings_Section_Force" xml:space="preserve">
+    <value>强制休息</value>
+  </data>
+  <data name="Settings_Section_System" xml:space="preserve">
+    <value>系统</value>
+  </data>
+
+  <data name="Settings_Toggle_Water" xml:space="preserve">
+    <value>喝水提醒</value>
+  </data>
+  <data name="Settings_Toggle_Stand" xml:space="preserve">
+    <value>站立提醒</value>
+  </data>
+  <data name="Settings_Toggle_Eyes" xml:space="preserve">
+    <value>放松眼睛提醒</value>
+  </data>
+
+  <data name="Settings_WaterInterval" xml:space="preserve">
+    <value>喝水间隔</value>
+  </data>
+  <data name="Settings_StandInterval" xml:space="preserve">
+    <value>站立间隔</value>
+  </data>
+  <data name="Settings_EyesInterval" xml:space="preserve">
+    <value>眼睛休息间隔</value>
+  </data>
+  <data name="Settings_ActiveStart" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="Settings_ActiveEnd" xml:space="preserve">
+    <value>结束</value>
+  </data>
+
+  <data name="Settings_DailyGoal" xml:space="preserve">
+    <value>每日目标 (ml)</value>
+  </data>
+  <data name="Settings_DosePerTap" xml:space="preserve">
+    <value>每次记录 (ml)</value>
+  </data>
+  <data name="Settings_TapCooldown" xml:space="preserve">
+    <value>防连点间隔 (秒)</value>
+  </data>
+  <data name="Settings_WaterProgress" xml:space="preserve">
+    <value>今日已喝 {0}/{1} ml</value>
+  </data>
+  <data name="Settings_LogWater" xml:space="preserve">
+    <value>我已喝完一杯</value>
+  </data>
+
+  <data name="Settings_ForceStand" xml:space="preserve">
+    <value>站立时全屏遮罩（至少 2 分钟）</value>
+  </data>
+  <data name="Settings_ForceEyes" xml:space="preserve">
+    <value>护眼时黑屏休息（至少 20 秒）</value>
+  </data>
+  <data name="Settings_StartStand" xml:space="preserve">
+    <value>立即开始站立</value>
+  </data>
+  <data name="Settings_StartEyes" xml:space="preserve">
+    <value>立即开始护眼</value>
+  </data>
+
+  <data name="Settings_Sound" xml:space="preserve">
+    <value>通知声音</value>
+  </data>
+  <data name="Settings_Launch" xml:space="preserve">
+    <value>开机启动（需要 MSIX 打包）</value>
+  </data>
+  <data name="Settings_TestToast" xml:space="preserve">
+    <value>发送测试通知</value>
+  </data>
+  <data name="Settings_Reset" xml:space="preserve">
+    <value>恢复默认</value>
+  </data>
+
+  <data name="Toast_TestTitle" xml:space="preserve">
+    <value>健康提醒测试</value>
+  </data>
+  <data name="Toast_TestBody" xml:space="preserve">
+    <value>如果你看到了这条通知，说明通知机制工作正常。</value>
+  </data>
+  <data name="Toast_WaterTitle" xml:space="preserve">
+    <value>喝水提醒</value>
+  </data>
+  <data name="Toast_WaterBody" xml:space="preserve">
+    <value>建议喝水约 {0} ml。喝完可点“我已喝完”记录。</value>
+  </data>
+  <data name="Toast_StandTitle" xml:space="preserve">
+    <value>站立与活动提醒</value>
+  </data>
+  <data name="Toast_StandBody" xml:space="preserve">
+    <value>起身站立 2 分钟，走动一下并活动肩颈。</value>
+  </data>
+  <data name="Toast_EyesTitle" xml:space="preserve">
+    <value>放松眼睛提醒</value>
+  </data>
+  <data name="Toast_EyesBody" xml:space="preserve">
+    <value>遵循 20-20-20：看 6 米外物体 20 秒，眨眼放松。</value>
+  </data>
+  <data name="Toast_Action_Snooze10" xml:space="preserve">
+    <value>稍后 10 分钟</value>
+  </data>
+  <data name="Toast_Action_Settings" xml:space="preserve">
+    <value>打开设置</value>
+  </data>
+  <data name="Toast_Action_WaterDone" xml:space="preserve">
+    <value>我已喝完</value>
+  </data>
+  <data name="Toast_Action_StartStand" xml:space="preserve">
+    <value>开始 2 分钟站立</value>
+  </data>
+  <data name="Toast_Action_StartEyes" xml:space="preserve">
+    <value>开始护眼休息</value>
+  </data>
+
+  <data name="Overlay_StandTitle" xml:space="preserve">
+    <value>站起来走动</value>
+  </data>
+  <data name="Overlay_EyesTitle" xml:space="preserve">
+    <value>闭眼休息</value>
+  </data>
+  <data name="Overlay_StandDone" xml:space="preserve">
+    <value>结束</value>
+  </data>
+  <data name="Overlay_EyesDone" xml:space="preserve">
+    <value>结束休息</value>
+  </data>
+  <data name="Overlay_Snooze10" xml:space="preserve">
+    <value>稍后 10 分钟</value>
+  </data>
+  <data name="Overlay_Stand_Remaining" xml:space="preserve">
+    <value>强制中断一下：站立并活动至少 2 分钟。\n剩余 {0} 秒</value>
+  </data>
+  <data name="Overlay_Eyes_Remaining" xml:space="preserve">
+    <value>屏幕用眼休息，减少干涩与疲劳。\n剩余 {0} 秒</value>
+  </data>
+  <data name="Overlay_Stand_AutoClose" xml:space="preserve">
+    <value>做得好！你可以继续工作了。\n如无操作，将在 {0} 秒后自动结束。</value>
+  </data>
+  <data name="Overlay_Eyes_AutoClose" xml:space="preserve">
+    <value>休息完成。点击结束休息返回。\n如无操作，将在 {0} 秒后自动结束。</value>
+  </data>
+  <data name="Overlay_Stand_DoneText" xml:space="preserve">
+    <value>本次站立结束。</value>
+  </data>
+  <data name="Overlay_Eyes_DoneText" xml:space="preserve">
+    <value>本次休息结束。</value>
+  </data>
+
+  <data name="Settings_SecondsSuffix" xml:space="preserve">
+    <value> · {0}秒</value>
+  </data>
+</root>

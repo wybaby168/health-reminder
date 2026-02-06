@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="AppTitle" xml:space="preserve">
+    <value>Health Reminder</value>
+  </data>
+
+  <data name="Menu_Pause60" xml:space="preserve">
+    <value>Pause 60 min</value>
+  </data>
+  <data name="Menu_Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="Menu_OpenSettings" xml:space="preserve">
+    <value>Open Settings</value>
+  </data>
+  <data name="Menu_Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="Menu_WaterStatus" xml:space="preserve">
+    <value>Water: Next {0} · Today {1}/{2} ml</value>
+  </data>
+  <data name="Menu_StandStatus" xml:space="preserve">
+    <value>Stand: Next {0}</value>
+  </data>
+  <data name="Menu_EyesStatus" xml:space="preserve">
+    <value>Eyes: Next {0}</value>
+  </data>
+  <data name="Menu_WaterDone" xml:space="preserve">
+    <value>I drank a cup</value>
+  </data>
+  <data name="Menu_WaterDoneCooldown" xml:space="preserve">
+    <value>I drank a cup ({0}s)</value>
+  </data>
+  <data name="Menu_WaterSnooze10" xml:space="preserve">
+    <value>Snooze water 10 min</value>
+  </data>
+  <data name="Menu_StandSnooze10" xml:space="preserve">
+    <value>Snooze stand 10 min</value>
+  </data>
+  <data name="Menu_EyesSnooze10" xml:space="preserve">
+    <value>Snooze eyes 10 min</value>
+  </data>
+
+  <data name="Settings_Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Settings_Subtitle" xml:space="preserve">
+    <value>Defaults: sip water, stand every 30–60 min, 20-20-20 rule.</value>
+  </data>
+  <data name="Settings_Section_Reminders" xml:space="preserve">
+    <value>Reminders</value>
+  </data>
+  <data name="Settings_Section_Intervals" xml:space="preserve">
+    <value>Intervals (min)</value>
+  </data>
+  <data name="Settings_Section_Active" xml:space="preserve">
+    <value>Active hours</value>
+  </data>
+  <data name="Settings_Section_Water" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="Settings_Section_Force" xml:space="preserve">
+    <value>Forced break</value>
+  </data>
+  <data name="Settings_Section_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+
+  <data name="Settings_Toggle_Water" xml:space="preserve">
+    <value>Water reminders</value>
+  </data>
+  <data name="Settings_Toggle_Stand" xml:space="preserve">
+    <value>Stand reminders</value>
+  </data>
+  <data name="Settings_Toggle_Eyes" xml:space="preserve">
+    <value>Eye break reminders</value>
+  </data>
+
+  <data name="Settings_WaterInterval" xml:space="preserve">
+    <value>Water interval</value>
+  </data>
+  <data name="Settings_StandInterval" xml:space="preserve">
+    <value>Stand interval</value>
+  </data>
+  <data name="Settings_EyesInterval" xml:space="preserve">
+    <value>Eye break interval</value>
+  </data>
+  <data name="Settings_ActiveStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Settings_ActiveEnd" xml:space="preserve">
+    <value>End</value>
+  </data>
+
+  <data name="Settings_DailyGoal" xml:space="preserve">
+    <value>Daily goal (ml)</value>
+  </data>
+  <data name="Settings_DosePerTap" xml:space="preserve">
+    <value>Per tap (ml)</value>
+  </data>
+  <data name="Settings_TapCooldown" xml:space="preserve">
+    <value>Tap cooldown (sec)</value>
+  </data>
+  <data name="Settings_WaterProgress" xml:space="preserve">
+    <value>Today {0}/{1} ml</value>
+  </data>
+  <data name="Settings_LogWater" xml:space="preserve">
+    <value>I drank a cup</value>
+  </data>
+
+  <data name="Settings_ForceStand" xml:space="preserve">
+    <value>Full-screen overlay for stand (min 2 min)</value>
+  </data>
+  <data name="Settings_ForceEyes" xml:space="preserve">
+    <value>Black screen for eyes (min 20 sec)</value>
+  </data>
+  <data name="Settings_StartStand" xml:space="preserve">
+    <value>Start stand now</value>
+  </data>
+  <data name="Settings_StartEyes" xml:space="preserve">
+    <value>Start eyes rest now</value>
+  </data>
+
+  <data name="Settings_Sound" xml:space="preserve">
+    <value>Notification sound</value>
+  </data>
+  <data name="Settings_Launch" xml:space="preserve">
+    <value>Launch at login (requires MSIX)</value>
+  </data>
+  <data name="Settings_TestToast" xml:space="preserve">
+    <value>Send test notification</value>
+  </data>
+  <data name="Settings_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+
+  <data name="Toast_TestTitle" xml:space="preserve">
+    <value>Health reminder test</value>
+  </data>
+  <data name="Toast_TestBody" xml:space="preserve">
+    <value>If you see this, notifications are working.</value>
+  </data>
+  <data name="Toast_WaterTitle" xml:space="preserve">
+    <value>Water reminder</value>
+  </data>
+  <data name="Toast_WaterBody" xml:space="preserve">
+    <value>Drink about {0} ml. Tap Done to log.</value>
+  </data>
+  <data name="Toast_StandTitle" xml:space="preserve">
+    <value>Stand reminder</value>
+  </data>
+  <data name="Toast_StandBody" xml:space="preserve">
+    <value>Stand up for 2 minutes and move around.</value>
+  </data>
+  <data name="Toast_EyesTitle" xml:space="preserve">
+    <value>Eye break</value>
+  </data>
+  <data name="Toast_EyesBody" xml:space="preserve">
+    <value>20-20-20: look 20 ft away for 20 seconds.</value>
+  </data>
+  <data name="Toast_Action_Snooze10" xml:space="preserve">
+    <value>Snooze 10 min</value>
+  </data>
+  <data name="Toast_Action_Settings" xml:space="preserve">
+    <value>Open Settings</value>
+  </data>
+  <data name="Toast_Action_WaterDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Toast_Action_StartStand" xml:space="preserve">
+    <value>Start 2-min stand</value>
+  </data>
+  <data name="Toast_Action_StartEyes" xml:space="preserve">
+    <value>Start eye rest</value>
+  </data>
+
+  <data name="Overlay_StandTitle" xml:space="preserve">
+    <value>Stand up</value>
+  </data>
+  <data name="Overlay_EyesTitle" xml:space="preserve">
+    <value>Rest your eyes</value>
+  </data>
+  <data name="Overlay_StandDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Overlay_EyesDone" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Overlay_Snooze10" xml:space="preserve">
+    <value>Snooze 10 min</value>
+  </data>
+  <data name="Overlay_Stand_Remaining" xml:space="preserve">
+    <value>Take a break: stand and move for at least 2 minutes.\n{0}s remaining</value>
+  </data>
+  <data name="Overlay_Eyes_Remaining" xml:space="preserve">
+    <value>Rest your eyes to reduce strain.\n{0}s remaining</value>
+  </data>
+  <data name="Overlay_Stand_AutoClose" xml:space="preserve">
+    <value>Nice! You can continue.\nAuto-closes in {0}s.</value>
+  </data>
+  <data name="Overlay_Eyes_AutoClose" xml:space="preserve">
+    <value>Done. Tap End to return.\nAuto-closes in {0}s.</value>
+  </data>
+  <data name="Overlay_Stand_DoneText" xml:space="preserve">
+    <value>Stand break ended.</value>
+  </data>
+  <data name="Overlay_Eyes_DoneText" xml:space="preserve">
+    <value>Eye rest ended.</value>
+  </data>
+
+  <data name="Settings_SecondsSuffix" xml:space="preserve">
+    <value> · {0}s</value>
+  </data>
+</root>

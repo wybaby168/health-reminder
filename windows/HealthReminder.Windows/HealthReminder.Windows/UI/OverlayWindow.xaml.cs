@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Win32;
 using System;
+using HealthReminder.Windows.Services;
 
 namespace HealthReminder.Windows.UI;
 
@@ -73,15 +74,17 @@ public sealed partial class OverlayWindow : Window
         switch (kind)
         {
             case OverlayKind.Stand:
-                TitleText.Text = "站起来走动";
+                TitleText.Text = Localizer.Get("Overlay_StandTitle");
                 SnoozeButton.Visibility = Visibility.Visible;
-                DoneText.Text = "我已站立 2 分钟";
+                DoneText.Text = Localizer.Get("Overlay_StandDone");
+                SnoozeText.Text = Localizer.Get("Overlay_Snooze10");
                 Root.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Black);
                 break;
             case OverlayKind.Eyes:
-                TitleText.Text = "闭眼休息";
+                TitleText.Text = Localizer.Get("Overlay_EyesTitle");
                 SnoozeButton.Visibility = Visibility.Collapsed;
-                DoneText.Text = "结束休息";
+                DoneText.Text = Localizer.Get("Overlay_EyesDone");
+                SnoozeText.Text = Localizer.Get("Overlay_Snooze10");
                 Root.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Black);
                 break;
         }
@@ -102,15 +105,20 @@ public sealed partial class OverlayWindow : Window
 
         if (remainingMin > TimeSpan.Zero)
         {
-            SubtitleText.Text = kind == OverlayKind.Stand
-                ? $"强制中断一下：站立并活动至少 2 分钟。\n剩余 {(int)remainingMin.TotalSeconds} 秒"
-                : $"屏幕用眼休息，减少干涩与疲劳。\n剩余 {(int)remainingMin.TotalSeconds} 秒";
+            var key = kind == OverlayKind.Stand ? "Overlay_Stand_Remaining" : "Overlay_Eyes_Remaining";
+            SubtitleText.Text = string.Format(Localizer.Get(key), (int)remainingMin.TotalSeconds);
         }
         else
         {
-            SubtitleText.Text = remainingMax > TimeSpan.Zero
-                ? $"最小时间已完成。\n如无操作，将在 {(int)remainingMax.TotalSeconds} 秒后自动结束。"
-                : "本次休息结束。";
+            if (remainingMax > TimeSpan.Zero)
+            {
+                var key = kind == OverlayKind.Stand ? "Overlay_Stand_AutoClose" : "Overlay_Eyes_AutoClose";
+                SubtitleText.Text = string.Format(Localizer.Get(key), (int)remainingMax.TotalSeconds);
+            }
+            else
+            {
+                SubtitleText.Text = Localizer.Get(kind == OverlayKind.Stand ? "Overlay_Stand_DoneText" : "Overlay_Eyes_DoneText");
+            }
         }
 
         if (elapsed >= maxDuration)

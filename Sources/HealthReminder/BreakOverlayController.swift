@@ -227,7 +227,7 @@ private struct BreakOverlayView: View {
                     Button {
                         onAction(.snooze10)
                     } label: {
-                        label("稍后 10 分钟", systemImage: "clock.arrow.circlepath")
+                        label(L("overlay.button.snooze10"), systemImage: "clock.arrow.circlepath")
                     }
                     .buttonStyle(.plain)
                     .disabled(remaining > 0)
@@ -300,9 +300,9 @@ private struct BreakOverlayView: View {
     private var title: String {
         switch kind {
         case .stand:
-            return "站起来走动"
+            return L("overlay.stand.title")
         case .eyes:
-            return "闭眼休息"
+            return L("overlay.eyes.title")
         }
     }
 
@@ -310,29 +310,29 @@ private struct BreakOverlayView: View {
         switch kind {
         case .stand:
             if remainingSeconds > 0 {
-                return "强制中断一下：站立并活动至少 2 分钟。\n剩余 \(remainingSeconds) 秒"
+                return LF("overlay.subtitle.stand.remaining", remainingSeconds)
             }
             if remainingMaxSeconds > 0 {
-                return "做得好！你可以继续工作了。\n如无操作，将在 \(remainingMaxSeconds) 秒后自动结束。"
+                return LF("overlay.subtitle.stand.autoclose", remainingMaxSeconds)
             }
-            return "本次站立结束。"
+            return L("overlay.subtitle.stand.done")
         case .eyes:
             if remainingSeconds > 0 {
-                return "屏幕用眼休息，减少干涩与疲劳。\n剩余 \(remainingSeconds) 秒"
+                return LF("overlay.subtitle.eyes.remaining", remainingSeconds)
             }
             if remainingMaxSeconds > 0 {
-                return "休息完成。点击结束休息返回。\n如无操作，将在 \(remainingMaxSeconds) 秒后自动结束。"
+                return LF("overlay.subtitle.eyes.autoclose", remainingMaxSeconds)
             }
-            return "本次休息结束。"
+            return L("overlay.subtitle.eyes.done")
         }
     }
 
     private var doneTitle: String {
         switch kind {
         case .stand:
-            return "我已站立 2 分钟"
+            return L("overlay.button.done.stand")
         case .eyes:
-            return "结束休息"
+            return L("overlay.button.done.eyes")
         }
     }
 }

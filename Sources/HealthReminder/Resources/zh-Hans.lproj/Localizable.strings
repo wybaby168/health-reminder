@@ -1,0 +1,145 @@
+"app.title" = "健康提醒";
+"app.menu.help.sendTest" = "发送测试通知";
+
+"menu.subtitle.pausedUntil" = "已暂停至 %@";
+"menu.subtitle.authorized" = "通知已启用";
+"menu.subtitle.denied" = "通知被禁用（点击设置开启）";
+"menu.subtitle.notDetermined" = "等待通知授权";
+"menu.subtitle.unknown" = "通知状态未知";
+
+"banner.notApp.title" = "当前不是 .app 进程";
+"banner.notApp.body" = "通知与开机启动需要以打包后的应用运行。";
+
+"banner.permission.title" = "开启通知，才能按时提醒";
+"banner.permission.body.denied" = "你已拒绝通知，请在系统设置中开启。";
+"banner.permission.body.request" = "点击按钮请求通知权限。";
+"banner.permission.button.settings" = "系统设置";
+"banner.permission.button.enable" = "立即开启";
+
+"button.resume" = "恢复";
+"button.pause60" = "暂停 60 分钟";
+"button.openSettings" = "打开设置";
+"button.quit" = "退出";
+"button.systemNotificationSettings" = "系统通知设置";
+
+"reminder.water" = "喝水";
+"reminder.stand" = "站立";
+"reminder.eyes" = "放松眼睛";
+
+"status.off" = "已关闭";
+"status.paused" = "已暂停";
+"status.snoozedUntil" = "已延后至 %@";
+"status.unscheduled" = "未计划";
+"status.next" = "下次：%@";
+"status.nextWater" = "下次：%@  ·  今日 %@/%@ ml%@";
+"status.cooldownSuffix" = "  ·  %@s";
+
+"action.later" = "稍后";
+"action.water.done" = "已喝";
+"action.water.recorded" = "已记录";
+
+"toast.water.recorded" = "+%d ml 已记录";
+"toast.water.cooldown" = "已记录，%ds 后可再次点击";
+
+"settings.title" = "设置";
+"settings.header.subtitle" = "默认参考：分次补水、久坐不超过 30–60 分钟、20-20-20 规则。";
+"settings.reset" = "恢复默认";
+"settings.reset.alert.title" = "恢复默认设置？";
+"settings.reset.alert.cancel" = "取消";
+"settings.reset.alert.confirm" = "恢复默认";
+"settings.reset.alert.message" = "将恢复到健康最佳实践的推荐默认值，你仍可随时再调整。";
+
+"settings.permission.notApp" = "请用打包后的 .app 运行，才能显示通知图标并正常提醒。";
+"settings.permission.notGranted.title" = "通知权限未开启";
+"settings.permission.notGranted.body.denied" = "你已拒绝通知，请到系统设置中开启。";
+"settings.permission.notGranted.body.request" = "点击按钮请求通知权限。";
+
+"settings.section.reminders" = "提醒项目";
+"settings.section.defaults" = "推荐默认（可自行调整）";
+"settings.section.force" = "强制休息";
+"settings.section.activeHours" = "活跃时段";
+"settings.section.water" = "喝水用量";
+"settings.section.system" = "系统";
+
+"settings.toggle.water" = "喝水提醒";
+"settings.toggle.stand" = "站立提醒";
+"settings.toggle.eyes" = "放松眼睛提醒";
+
+"settings.stepper.waterInterval" = "喝水间隔";
+"settings.stepper.standInterval" = "站立间隔";
+"settings.stepper.eyesInterval" = "眼睛休息间隔";
+"settings.unit.minutes" = "%@ 分钟";
+
+"settings.toggle.forceStand" = "站立时全屏遮罩（至少 2 分钟）";
+"settings.toggle.forceEyes" = "护眼时黑屏休息（至少 20 秒）";
+"settings.button.startStand" = "立即开始站立";
+"settings.button.startEyes" = "立即开始护眼";
+
+"settings.active.start" = "开始";
+"settings.active.end" = "结束";
+"settings.active.current" = "当前时段";
+"settings.active.preset.allDay" = "全天";
+"settings.active.preset.workday" = "工作日";
+"settings.active.preset.daytime" = "日间";
+"settings.active.preset.night" = "夜间";
+"settings.active.hint" = "仅在活跃时段内发送提醒，结束早于开始表示跨夜。";
+"settings.active.summary.allDay" = "全天 · 24 小时";
+"settings.active.summary.format" = "%@ · %@";
+"settings.active.summary.overnight" = "跨夜";
+"settings.duration.hours" = "%d 小时";
+"settings.duration.minutes" = "%d 分钟";
+"settings.duration.hoursMinutes" = "%d 小时 %d 分钟";
+
+"settings.water.goal" = "每日目标";
+"settings.water.dose" = "每次记录";
+"settings.water.cooldown" = "防连点间隔";
+"settings.unit.ml" = "%@ ml";
+"settings.unit.seconds" = "%@ 秒";
+"settings.water.suggested" = "建议每次";
+"settings.water.today" = "今日已喝";
+"settings.water.button.log" = "我已喝完一杯";
+
+"settings.system.sound" = "通知声音";
+"settings.system.launchAtLogin" = "开机启动";
+"settings.system.permission" = "通知权限";
+"settings.system.permission.authorized" = "已允许";
+"settings.system.permission.denied" = "已拒绝";
+"settings.system.permission.notDetermined" = "未选择";
+"settings.system.permission.unknown" = "未知";
+"settings.system.sendTest" = "发送测试通知";
+"settings.system.openNotificationSettings" = "打开系统通知设置";
+
+"tips.title" = "小贴士";
+"tips.water" = "喝水：多数成年人建议 1.5–2.5L/天，按口渴与尿色调整；运动/高温/咖啡因需额外补水。";
+"tips.stand" = "站立：每 30–60 分钟起身走动能降低久坐相关风险；可顺便做肩颈与小腿拉伸。";
+"tips.eyes" = "眼睛：20-20-20 有助缓解屏幕用眼疲劳；别忘了眨眼与调整屏幕亮度。";
+
+"overlay.stand.title" = "站起来走动";
+"overlay.stand.subtitle" = "站立并活动至少 2 分钟";
+"overlay.eyes.title" = "闭眼休息";
+"overlay.eyes.subtitle" = "护眼休息一会，眨眼放松";
+"overlay.button.snooze10" = "稍后 10 分钟";
+"overlay.button.done.stand" = "结束";
+"overlay.button.done.eyes" = "结束休息";
+"overlay.remaining" = "剩余 %@ 秒";
+"overlay.subtitle.stand.remaining" = "强制中断一下：站立并活动至少 2 分钟。\n剩余 %d 秒";
+"overlay.subtitle.stand.autoclose" = "做得好！你可以继续工作了。\n如无操作，将在 %d 秒后自动结束。";
+"overlay.subtitle.stand.done" = "本次站立结束。";
+"overlay.subtitle.eyes.remaining" = "屏幕用眼休息，减少干涩与疲劳。\n剩余 %d 秒";
+"overlay.subtitle.eyes.autoclose" = "休息完成。点击结束休息返回。\n如无操作，将在 %d 秒后自动结束。";
+"overlay.subtitle.eyes.done" = "本次休息结束。";
+
+"notification.test.title" = "健康提醒测试";
+"notification.test.body" = "如果你看到了这条通知，说明通知权限和推送机制工作正常。";
+"notification.water.title" = "喝水提醒";
+"notification.water.body" = "建议喝水约 %d ml。喝完可点通知里的“我已喝完”自动记录。";
+"notification.stand.title" = "站立与活动提醒";
+"notification.stand.body" = "起身站立 2 分钟，走动一下并活动肩颈。";
+"notification.eyes.title" = "放松眼睛提醒";
+"notification.eyes.body" = "遵循 20-20-20：看 6 米外物体 20 秒，眨眼放松。";
+
+"notification.action.snooze10" = "稍后 10 分钟";
+"notification.action.openSettings" = "打开设置";
+"notification.action.waterDone" = "我已喝完";
+"notification.action.startStand" = "开始 2 分钟站立";
+"notification.action.startEyes" = "开始护眼休息";

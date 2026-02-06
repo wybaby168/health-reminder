@@ -6,7 +6,7 @@ struct HealthReminderApp: App {
     @StateObject private var appModel = AppModel()
 
     var body: some Scene {
-        MenuBarExtra("健康提醒", systemImage: appModel.menuBarSymbolName) {
+        MenuBarExtra(L("app.title"), systemImage: appModel.menuBarSymbolName) {
             MenuBarContentView()
                 .environmentObject(appModel)
                 .frame(width: 320)

@@ -147,8 +147,8 @@ final class ReminderEngine: ObservableObject {
             }
             await notificationClient.sendReminder(
                 type: type,
-                title: "站立与活动",
-                body: "现在起身走动 2 分钟。",
+                title: L("notification.stand.title"),
+                body: L("notification.stand.body"),
                 soundEnabled: preferences.soundEnabled
             )
             recalculate()
@@ -159,8 +159,8 @@ final class ReminderEngine: ObservableObject {
             BreakOverlayController.shared.presentEyesRest(minDurationSeconds: 20)
             await notificationClient.sendReminder(
                 type: type,
-                title: "护眼休息",
-                body: "开始 20 秒闭眼/远眺放松。",
+                title: L("notification.eyes.title"),
+                body: L("notification.eyes.body"),
                 soundEnabled: false
             )
             recalculate()
@@ -182,18 +182,18 @@ final class ReminderEngine: ObservableObject {
         case .water:
             let dose = preferences.waterDosePerTapMl
             return (
-                title: "喝水提醒",
-                body: "建议喝水约 \(dose) ml。喝完可点通知里的“我已喝完”自动记录。"
+                title: L("notification.water.title"),
+                body: LF("notification.water.body", dose)
             )
         case .stand:
             return (
-                title: "站立与活动提醒",
-                body: "起身站立 2 分钟，走动一下并活动肩颈。"
+                title: L("notification.stand.title"),
+                body: L("notification.stand.body")
             )
         case .eyes:
             return (
-                title: "放松眼睛提醒",
-                body: "遵循 20-20-20：看 6 米外物体 20 秒，眨眼放松。"
+                title: L("notification.eyes.title"),
+                body: L("notification.eyes.body")
             )
         }
     }

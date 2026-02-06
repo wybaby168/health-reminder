@@ -91,8 +91,8 @@ final class AppModel: ObservableObject {
     func sendTestNotification() {
         Task {
             await notifications.sendNow(
-                title: "健康提醒测试",
-                body: "如果你看到了这条通知，说明通知权限和推送机制工作正常。"
+                title: L("notification.test.title"),
+                body: L("notification.test.body")
             )
         }
     }
@@ -104,7 +104,7 @@ final class AppModel: ObservableObject {
     @discardableResult
     func markWaterDone() -> Bool {
         if let dose = preferences.tryLogWaterIntake() {
-            toast = ToastMessage(text: "+\(dose) ml 已记录", tint: .water)
+            toast = ToastMessage(text: LF("toast.water.recorded", dose), tint: .water)
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 1_800_000_000)
                 if toast?.tint == .water {
@@ -114,7 +114,7 @@ final class AppModel: ObservableObject {
             return true
         } else {
             let remaining = preferences.waterTapRemainingSeconds()
-            toast = ToastMessage(text: "已记录，\(remaining)s 后可再次点击", tint: .warning)
+            toast = ToastMessage(text: LF("toast.water.cooldown", remaining), tint: .warning)
             Task { @MainActor in
                 try? await Task.sleep(nanoseconds: 1_500_000_000)
                 if toast?.tint == .warning {

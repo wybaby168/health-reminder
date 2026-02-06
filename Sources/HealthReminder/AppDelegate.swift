@@ -52,28 +52,28 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     private func registerNotificationCategories(center: UNUserNotificationCenter) {
         let snooze10 = UNNotificationAction(
             identifier: NotificationActionID.snooze10,
-            title: "稍后 10 分钟",
+            title: L("notification.action.snooze10"),
             options: []
         )
         let openSettings = UNNotificationAction(
             identifier: NotificationActionID.openSettings,
-            title: "打开设置",
+            title: L("notification.action.openSettings"),
             options: [.foreground]
         )
 
         let waterDone = UNNotificationAction(
             identifier: NotificationActionID.waterDone,
-            title: "我已喝完",
+            title: L("notification.action.waterDone"),
             options: []
         )
         let startStand = UNNotificationAction(
             identifier: NotificationActionID.startStand,
-            title: "开始 2 分钟站立",
+            title: L("notification.action.startStand"),
             options: [.foreground]
         )
         let startEyes = UNNotificationAction(
             identifier: NotificationActionID.startEyes,
-            title: "开始护眼休息",
+            title: L("notification.action.startEyes"),
             options: [.foreground]
         )
 

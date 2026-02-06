@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using HealthReminder.Windows.Services;
 
 namespace HealthReminder.Windows.Services;
 
@@ -37,7 +38,7 @@ public sealed class TrayIconService
 
         notifyIcon = new NotifyIcon
         {
-            Text = "健康提醒",
+            Text = Localizer.Get("AppTitle"),
             Visible = true,
             ContextMenuStrip = menu
         };
@@ -70,20 +71,20 @@ public sealed class TrayIconService
     {
         var m = new ContextMenuStrip();
 
-        var title = new ToolStripMenuItem("健康提醒") { Enabled = false };
+        var title = new ToolStripMenuItem(Localizer.Get("AppTitle")) { Enabled = false };
         m.Items.Add(title);
         m.Items.Add(new ToolStripSeparator());
 
-        waterStatus = new ToolStripMenuItem("喝水：-") { Enabled = false };
-        standStatus = new ToolStripMenuItem("站立：-") { Enabled = false };
-        eyesStatus = new ToolStripMenuItem("护眼：-") { Enabled = false };
+        waterStatus = new ToolStripMenuItem(string.Format(Localizer.Get("Menu_WaterStatus"), "-", 0, 0)) { Enabled = false };
+        standStatus = new ToolStripMenuItem(string.Format(Localizer.Get("Menu_StandStatus"), "-")) { Enabled = false };
+        eyesStatus = new ToolStripMenuItem(string.Format(Localizer.Get("Menu_EyesStatus"), "-")) { Enabled = false };
         m.Items.Add(waterStatus);
         m.Items.Add(standStatus);
         m.Items.Add(eyesStatus);
 
         m.Items.Add(new ToolStripSeparator());
 
-        waterDone = new ToolStripMenuItem("我已喝完");
+        waterDone = new ToolStripMenuItem(Localizer.Get("Menu_WaterDone"));
         waterDone.Click += (_, _) =>
         {
             if (model.TryLogWater(out _))
@@ -93,35 +94,35 @@ public sealed class TrayIconService
         };
         m.Items.Add(waterDone);
 
-        waterSnooze = new ToolStripMenuItem("喝水稍后 10 分钟");
+        waterSnooze = new ToolStripMenuItem(Localizer.Get("Menu_WaterSnooze10"));
         waterSnooze.Click += (_, _) => model.Snooze(ReminderType.Water, 10);
         m.Items.Add(waterSnooze);
 
-        standSnooze = new ToolStripMenuItem("站立稍后 10 分钟");
+        standSnooze = new ToolStripMenuItem(Localizer.Get("Menu_StandSnooze10"));
         standSnooze.Click += (_, _) => model.Snooze(ReminderType.Stand, 10);
         m.Items.Add(standSnooze);
 
-        eyesSnooze = new ToolStripMenuItem("护眼稍后 10 分钟");
+        eyesSnooze = new ToolStripMenuItem(Localizer.Get("Menu_EyesSnooze10"));
         eyesSnooze.Click += (_, _) => model.Snooze(ReminderType.Eyes, 10);
         m.Items.Add(eyesSnooze);
 
         m.Items.Add(new ToolStripSeparator());
 
-        var pause = new ToolStripMenuItem("暂停 60 分钟");
+        var pause = new ToolStripMenuItem(Localizer.Get("Menu_Pause60"));
         pause.Click += (_, _) => model.PauseAll(60);
         m.Items.Add(pause);
 
-        var resume = new ToolStripMenuItem("恢复");
+        var resume = new ToolStripMenuItem(Localizer.Get("Menu_Resume"));
         resume.Click += (_, _) => model.ResumeAll();
         m.Items.Add(resume);
 
         m.Items.Add(new ToolStripSeparator());
 
-        var settings = new ToolStripMenuItem("打开设置");
+        var settings = new ToolStripMenuItem(Localizer.Get("Menu_OpenSettings"));
         settings.Click += (_, _) => openSettings();
         m.Items.Add(settings);
 
-        var quit = new ToolStripMenuItem("退出");
+        var quit = new ToolStripMenuItem(Localizer.Get("Menu_Quit"));
         quit.Click += (_, _) => exit();
         m.Items.Add(quit);
 
@@ -142,14 +143,14 @@ public sealed class TrayIconService
                 ? en.ToLocalTime().ToString("HH:mm")
                 : "-";
 
-            if (waterStatus != null) waterStatus.Text = $"喝水：下次 {waterNext} · 今日 {model.Preferences.State.WaterConsumedTodayMl}/{model.Preferences.State.DailyWaterGoalMl} ml";
-            if (standStatus != null) standStatus.Text = $"站立：下次 {standNext}";
-            if (eyesStatus != null) eyesStatus.Text = $"护眼：下次 {eyesNext}";
+            if (waterStatus != null) waterStatus.Text = string.Format(Localizer.Get("Menu_WaterStatus"), waterNext, model.Preferences.State.WaterConsumedTodayMl, model.Preferences.State.DailyWaterGoalMl);
+            if (standStatus != null) standStatus.Text = string.Format(Localizer.Get("Menu_StandStatus"), standNext);
+            if (eyesStatus != null) eyesStatus.Text = string.Format(Localizer.Get("Menu_EyesStatus"), eyesNext);
 
             var waterCooldown = model.Preferences.WaterRemainingCooldownSeconds(now);
             if (waterDone != null) waterDone.Enabled = waterCooldown == 0;
-            if (waterDone != null && waterCooldown > 0) waterDone.Text = $"我已喝完（{waterCooldown}s）";
-            if (waterDone != null && waterCooldown == 0) waterDone.Text = "我已喝完";
+            if (waterDone != null && waterCooldown > 0) waterDone.Text = string.Format(Localizer.Get("Menu_WaterDoneCooldown"), waterCooldown);
+            if (waterDone != null && waterCooldown == 0) waterDone.Text = Localizer.Get("Menu_WaterDone");
         };
 
         return m;

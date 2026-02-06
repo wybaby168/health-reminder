@@ -33,7 +33,7 @@ struct MenuBarContentView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "alarm.fill")
                         .foregroundStyle(Color(red: 0.35, green: 0.86, blue: 0.73))
-                    Text("健康提醒")
+                    Text("app.title")
                         .font(.headline)
                 }
                 Text(subtitle)
@@ -47,7 +47,7 @@ struct MenuBarContentView: View {
                 Image(systemName: "paperplane")
             }
             .buttonStyle(.borderless)
-            .help("发送测试通知")
+            .help(L("app.menu.help.sendTest"))
         }
     }
 
@@ -59,9 +59,9 @@ struct MenuBarContentView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("当前不是 .app 进程")
+                        Text("banner.notApp.title")
                             .font(.subheadline.weight(.semibold))
-                        Text("通知与开机启动需要以打包后的应用运行。")
+                        Text("banner.notApp.body")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -74,18 +74,18 @@ struct MenuBarContentView: View {
                     Image(systemName: "bell.badge.fill")
                         .foregroundStyle(.orange)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("开启通知，才能按时提醒")
+                        Text("banner.permission.title")
                             .font(.subheadline.weight(.semibold))
-                        Text(model.authorization == .denied ? "你已拒绝通知，请在系统设置中开启。" : "点击按钮请求通知权限。")
+                        Text(model.authorization == .denied ? L("banner.permission.body.denied") : L("banner.permission.body.request"))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
                     if model.authorization == .denied {
-                        Button("系统设置") { model.openSystemNotificationSettings() }
+                        Button(L("banner.permission.button.settings")) { model.openSystemNotificationSettings() }
                             .buttonStyle(.bordered)
                     } else {
-                        Button("立即开启") { model.requestNotificationPermission() }
+                        Button(L("banner.permission.button.enable")) { model.requestNotificationPermission() }
                             .buttonStyle(.borderedProminent)
                             .tint(Color(red: 0.35, green: 0.86, blue: 0.73))
                     }
@@ -103,17 +103,17 @@ struct MenuBarContentView: View {
 
     private var subtitle: String {
         if model.preferences.pauseUntil > Date() {
-            return "已暂停至 \(DateText.time(model.preferences.pauseUntil))"
+            return LF("menu.subtitle.pausedUntil", DateText.time(model.preferences.pauseUntil))
         }
         switch model.authorization {
         case .authorized:
-            return "通知已启用"
+            return L("menu.subtitle.authorized")
         case .denied:
-            return "通知被禁用（点击设置开启）"
+            return L("menu.subtitle.denied")
         case .notDetermined:
-            return "等待通知授权"
+            return L("menu.subtitle.notDetermined")
         case .unknown:
-            return "通知状态未知"
+            return L("menu.subtitle.unknown")
         }
     }
 
@@ -157,22 +157,22 @@ struct MenuBarContentView: View {
         VStack(spacing: 8) {
             HStack(spacing: 8) {
                 if model.preferences.pauseUntil > Date() {
-                    Button("恢复") { model.resumeAll() }
+                    Button(L("button.resume")) { model.resumeAll() }
                 } else {
-                    Button("暂停 60 分钟") { model.pauseAll(minutes: 60) }
+                    Button(L("button.pause60")) { model.pauseAll(minutes: 60) }
                 }
-                Button("打开设置") {
+                Button(L("button.openSettings")) {
                     model.openSettingsWindow()
                 }
             }
             HStack(spacing: 8) {
-                Button("退出") {
+                Button(L("button.quit")) {
                     NSApp.terminate(nil)
                 }
                 .foregroundStyle(.red)
                 Spacer()
                 if model.authorization == .denied {
-                    Button("系统通知设置") { model.openSystemNotificationSettings() }
+                    Button(L("button.systemNotificationSettings")) { model.openSystemNotificationSettings() }
                 }
             }
         }
@@ -192,7 +192,7 @@ private struct ReminderStatusRow: View {
                 .font(.system(size: 16))
                 .frame(width: 18, height: 18)
             VStack(alignment: .leading, spacing: 2) {
-                Text(type.displayName)
+                Text(LocalizedStringKey(type.titleKey))
                     .font(.subheadline)
                 Text(detail)
                     .font(.caption)
@@ -218,7 +218,7 @@ private struct ReminderStatusRow: View {
             Button {
                 model.snooze(type, minutes: 10)
             } label: {
-                Label("稍后", systemImage: "clock")
+                Label(L("action.later"), systemImage: "clock")
             }
             .buttonStyle(.borderless)
             .disabled(!isEnabled)
@@ -258,24 +258,30 @@ private struct ReminderStatusRow: View {
     }
 
     private var detail: String {
-        if !isEnabled { return "已关闭" }
-        if model.preferences.pauseUntil > Date() { return "已暂停" }
+        if !isEnabled { return L("status.off") }
+        if model.preferences.pauseUntil > Date() { return L("status.paused") }
         if let snooze = model.preferences.snoozeUntilByType[type.rawValue], snooze > Date() {
-            return "已延后至 \(DateText.time(snooze))"
+            return LF("status.snoozedUntil", DateText.time(snooze))
         }
-        guard let next = model.nextTriggerByType[type] else { return "未计划" }
+        guard let next = model.nextTriggerByType[type] else { return L("status.unscheduled") }
         if type == .water {
             let remaining = model.preferences.waterTapRemainingSeconds(now: now)
-            let gate = remaining > 0 ? "  ·  \(remaining)s" : ""
-            return "下次：\(DateText.time(next))  ·  今日 \(model.preferences.waterConsumedTodayMl)/\(model.preferences.dailyWaterGoalMl) ml\(gate)"
+            let gate = remaining > 0 ? LF("status.cooldownSuffix", remaining) : ""
+            return LF(
+                "status.nextWater",
+                DateText.time(next),
+                String(model.preferences.waterConsumedTodayMl),
+                String(model.preferences.dailyWaterGoalMl),
+                gate
+            )
         }
-        return "下次：\(DateText.time(next))"
+        return LF("status.next", DateText.time(next))
     }
 
     private var waterButtonTitle: String {
         let remaining = model.preferences.waterTapRemainingSeconds(now: now)
-        if remaining > 0 { return "已记录" }
-        return "已喝"
+        if remaining > 0 { return L("action.water.recorded") }
+        return L("action.water.done")
     }
 
     private var waterButtonSymbol: String {

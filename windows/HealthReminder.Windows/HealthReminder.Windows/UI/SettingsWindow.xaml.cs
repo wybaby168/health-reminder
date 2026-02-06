@@ -16,13 +16,53 @@ public sealed partial class SettingsWindow : Window
         this.model = model;
         InitializeComponent();
 
-        Title = "设置";
+        ApplyLocalization();
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(null);
 
         LoadFromState();
         HookEvents();
         UpdateWaterUI();
+    }
+
+    private void ApplyLocalization()
+    {
+        Title = Localizer.Get("Settings_Title");
+        HeaderTitle.Text = Localizer.Get("Settings_Title");
+        HeaderSubtitle.Text = Localizer.Get("Settings_Subtitle");
+
+        SectionReminders.Text = Localizer.Get("Settings_Section_Reminders");
+        SectionIntervals.Text = Localizer.Get("Settings_Section_Intervals");
+        SectionActive.Text = Localizer.Get("Settings_Section_Active");
+        SectionWater.Text = Localizer.Get("Settings_Section_Water");
+        SectionForce.Text = Localizer.Get("Settings_Section_Force");
+        SectionSystem.Text = Localizer.Get("Settings_Section_System");
+
+        WaterToggle.Header = Localizer.Get("Settings_Toggle_Water");
+        StandToggle.Header = Localizer.Get("Settings_Toggle_Stand");
+        EyesToggle.Header = Localizer.Get("Settings_Toggle_Eyes");
+
+        WaterInterval.Header = Localizer.Get("Settings_WaterInterval");
+        StandInterval.Header = Localizer.Get("Settings_StandInterval");
+        EyesInterval.Header = Localizer.Get("Settings_EyesInterval");
+
+        ActiveStart.Header = Localizer.Get("Settings_ActiveStart");
+        ActiveEnd.Header = Localizer.Get("Settings_ActiveEnd");
+
+        DailyGoal.Header = Localizer.Get("Settings_DailyGoal");
+        DosePerTap.Header = Localizer.Get("Settings_DosePerTap");
+        TapCooldown.Header = Localizer.Get("Settings_TapCooldown");
+        LogWaterButton.Content = Localizer.Get("Settings_LogWater");
+
+        StandOverlayToggle.Header = Localizer.Get("Settings_ForceStand");
+        EyesOverlayToggle.Header = Localizer.Get("Settings_ForceEyes");
+        StartStandButton.Content = Localizer.Get("Settings_StartStand");
+        StartEyesButton.Content = Localizer.Get("Settings_StartEyes");
+
+        SoundToggle.Header = Localizer.Get("Settings_Sound");
+        LaunchToggle.Header = Localizer.Get("Settings_Launch");
+        TestToastButton.Content = Localizer.Get("Settings_TestToast");
+        ResetButton.Content = Localizer.Get("Settings_Reset");
     }
 
     public void BringToFront()
@@ -122,7 +162,8 @@ public sealed partial class SettingsWindow : Window
         model.Preferences.RefreshDaily(now);
         var s = model.Preferences.State;
         var remaining = model.Preferences.WaterRemainingCooldownSeconds(now);
-        WaterProgress.Text = $"今日已喝 {s.WaterConsumedTodayMl}/{s.DailyWaterGoalMl} ml" + (remaining > 0 ? $" · {remaining}s" : "");
+        var baseText = string.Format(Localizer.Get("Settings_WaterProgress"), s.WaterConsumedTodayMl, s.DailyWaterGoalMl);
+        WaterProgress.Text = baseText + (remaining > 0 ? string.Format(Localizer.Get("Settings_SecondsSuffix"), remaining) : "");
         LogWaterButton.IsEnabled = model.Preferences.CanLogWater(now);
     }
 
@@ -149,7 +190,7 @@ public sealed partial class SettingsWindow : Window
 
     private void OnTestToast(object sender, RoutedEventArgs e)
     {
-        ToastNotificationService.ShowReminderToast(ReminderType.Water, "健康提醒测试", "如果你看到了这条通知，说明通知机制工作正常。", model.Preferences.State.SoundEnabled);
+        ToastNotificationService.ShowReminderToast(ReminderType.Water, Localizer.Get("Toast_TestTitle"), Localizer.Get("Toast_TestBody"), model.Preferences.State.SoundEnabled);
     }
 
     private void OnReset(object sender, RoutedEventArgs e)

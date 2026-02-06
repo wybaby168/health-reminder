@@ -21,7 +21,7 @@
                 <Button x:Name="SnoozeButton" Click="OnSnooze" Visibility="Collapsed" Background="#334B5563" CornerRadius="14" Padding="18,10">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <FontIcon Glyph="\uE121" Foreground="White" />
-                        <TextBlock Text="稍后 10 分钟" Foreground="White" />
+                        <TextBlock x:Name="SnoozeText" Foreground="White" />
                     </StackPanel>
                 </Button>
                 <Button x:Name="DoneButton" Click="OnDone" IsEnabled="False" Background="#E84DD2A8" CornerRadius="14" Padding="18,10">

@@ -23,7 +23,7 @@ final class SettingsWindowController: NSObject, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "设置"
+        window.title = L("settings.title")
         window.isReleasedWhenClosed = false
         window.delegate = self
         window.center()
@@ -46,4 +46,3 @@ final class SettingsWindowController: NSObject, NSWindowDelegate {
         window.orderFrontRegardless()
     }
 }
-

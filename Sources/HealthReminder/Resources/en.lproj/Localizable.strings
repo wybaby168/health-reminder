@@ -1,0 +1,145 @@
+"app.title" = "Health Reminder";
+"app.menu.help.sendTest" = "Send test notification";
+
+"menu.subtitle.pausedUntil" = "Paused until %@";
+"menu.subtitle.authorized" = "Notifications enabled";
+"menu.subtitle.denied" = "Notifications disabled (open Settings)";
+"menu.subtitle.notDetermined" = "Waiting for notification permission";
+"menu.subtitle.unknown" = "Unknown notification status";
+
+"banner.notApp.title" = "Not running as a .app";
+"banner.notApp.body" = "Notifications and Launch at Login require running the packaged app.";
+
+"banner.permission.title" = "Enable notifications to get reminders";
+"banner.permission.body.denied" = "Notifications were denied. Enable them in System Settings.";
+"banner.permission.body.request" = "Tap to request notification permission.";
+"banner.permission.button.settings" = "System Settings";
+"banner.permission.button.enable" = "Enable now";
+
+"button.resume" = "Resume";
+"button.pause60" = "Pause 60 min";
+"button.openSettings" = "Open Settings";
+"button.quit" = "Quit";
+"button.systemNotificationSettings" = "Notification Settings";
+
+"reminder.water" = "Water";
+"reminder.stand" = "Stand";
+"reminder.eyes" = "Rest eyes";
+
+"status.off" = "Off";
+"status.paused" = "Paused";
+"status.snoozedUntil" = "Snoozed until %@";
+"status.unscheduled" = "Not scheduled";
+"status.next" = "Next: %@";
+"status.nextWater" = "Next: %@ · Today %@/%@ ml%@";
+"status.cooldownSuffix" = " · %@s";
+
+"action.later" = "Later";
+"action.water.done" = "Done";
+"action.water.recorded" = "Recorded";
+
+"toast.water.recorded" = "+%d ml recorded";
+"toast.water.cooldown" = "Already recorded, retry in %ds";
+
+"settings.title" = "Settings";
+"settings.header.subtitle" = "Defaults: sip water, stand every 30–60 min, 20-20-20 rule.";
+"settings.reset" = "Reset";
+"settings.reset.alert.title" = "Reset to defaults?";
+"settings.reset.alert.cancel" = "Cancel";
+"settings.reset.alert.confirm" = "Reset";
+"settings.reset.alert.message" = "Restores recommended defaults. You can adjust anytime.";
+
+"settings.permission.notApp" = "Run the packaged .app to receive notifications.";
+"settings.permission.notGranted.title" = "Notifications are off";
+"settings.permission.notGranted.body.denied" = "Notifications were denied. Enable them in System Settings.";
+"settings.permission.notGranted.body.request" = "Tap to request notification permission.";
+
+"settings.section.reminders" = "Reminders";
+"settings.section.defaults" = "Recommended";
+"settings.section.force" = "Forced break";
+"settings.section.activeHours" = "Active hours";
+"settings.section.water" = "Water";
+"settings.section.system" = "System";
+
+"settings.toggle.water" = "Water reminders";
+"settings.toggle.stand" = "Stand reminders";
+"settings.toggle.eyes" = "Eye break reminders";
+
+"settings.stepper.waterInterval" = "Water interval";
+"settings.stepper.standInterval" = "Stand interval";
+"settings.stepper.eyesInterval" = "Eye break interval";
+"settings.unit.minutes" = "%@ min";
+
+"settings.toggle.forceStand" = "Full-screen overlay for stand (min 2 min)";
+"settings.toggle.forceEyes" = "Black screen for eyes (min 20 sec)";
+"settings.button.startStand" = "Start stand now";
+"settings.button.startEyes" = "Start eyes rest now";
+
+"settings.active.start" = "Start";
+"settings.active.end" = "End";
+"settings.active.current" = "Current period";
+"settings.active.preset.allDay" = "All day";
+"settings.active.preset.workday" = "Workday";
+"settings.active.preset.daytime" = "Daytime";
+"settings.active.preset.night" = "Night";
+"settings.active.hint" = "Reminders only during active hours; end earlier than start means overnight.";
+"settings.active.summary.allDay" = "All day · 24 hours";
+"settings.active.summary.format" = "%@ · %@";
+"settings.active.summary.overnight" = "overnight";
+"settings.duration.hours" = "%d h";
+"settings.duration.minutes" = "%d min";
+"settings.duration.hoursMinutes" = "%d h %d min";
+
+"settings.water.goal" = "Daily goal";
+"settings.water.dose" = "Per tap";
+"settings.water.cooldown" = "Tap cooldown";
+"settings.unit.ml" = "%@ ml";
+"settings.unit.seconds" = "%@ sec";
+"settings.water.suggested" = "Suggested per time";
+"settings.water.today" = "Today";
+"settings.water.button.log" = "I drank a cup";
+
+"settings.system.sound" = "Notification sound";
+"settings.system.launchAtLogin" = "Launch at login";
+"settings.system.permission" = "Notification permission";
+"settings.system.permission.authorized" = "Allowed";
+"settings.system.permission.denied" = "Denied";
+"settings.system.permission.notDetermined" = "Not set";
+"settings.system.permission.unknown" = "Unknown";
+"settings.system.sendTest" = "Send test notification";
+"settings.system.openNotificationSettings" = "Open notification settings";
+
+"tips.title" = "Tips";
+"tips.water" = "Water: many adults need 1.5–2.5L/day; adjust by thirst and urine color.";
+"tips.stand" = "Stand: getting up every 30–60 min reduces sedentary risk.";
+"tips.eyes" = "Eyes: 20-20-20 helps reduce eye strain; blink and adjust brightness.";
+
+"overlay.stand.title" = "Stand up";
+"overlay.stand.subtitle" = "Stand and move for at least 2 minutes.";
+"overlay.eyes.title" = "Rest your eyes";
+"overlay.eyes.subtitle" = "Follow 20-20-20 and blink to relax.";
+"overlay.button.snooze10" = "Snooze 10 min";
+"overlay.button.done.stand" = "Done";
+"overlay.button.done.eyes" = "End";
+"overlay.remaining" = "%@s remaining";
+"overlay.subtitle.stand.remaining" = "Take a break: stand and move for at least 2 minutes.\n%ds remaining";
+"overlay.subtitle.stand.autoclose" = "Nice! You can continue.\nAuto-closes in %ds.";
+"overlay.subtitle.stand.done" = "Stand break ended.";
+"overlay.subtitle.eyes.remaining" = "Rest your eyes to reduce strain.\n%ds remaining";
+"overlay.subtitle.eyes.autoclose" = "Done. Tap End to return.\nAuto-closes in %ds.";
+"overlay.subtitle.eyes.done" = "Eye rest ended.";
+
+"notification.test.title" = "Health reminder test";
+"notification.test.body" = "If you see this, notifications are working.";
+"notification.water.title" = "Water reminder";
+"notification.water.body" = "Drink about %d ml. Tap 'Done' to log.";
+"notification.stand.title" = "Stand reminder";
+"notification.stand.body" = "Stand up for 2 minutes and move around.";
+"notification.eyes.title" = "Eye break";
+"notification.eyes.body" = "20-20-20: look 20 ft away for 20 seconds.";
+
+"notification.action.snooze10" = "Snooze 10 min";
+"notification.action.openSettings" = "Open Settings";
+"notification.action.waterDone" = "Done";
+"notification.action.startStand" = "Start 2-min stand";
+"notification.action.startEyes" = "Start eye rest";

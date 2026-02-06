@@ -160,11 +160,10 @@ public sealed class ReminderEngine
         var s = model.Preferences.State;
         return type switch
         {
-            ReminderType.Water => ("喝水提醒", $"建议喝水约 {Math.Clamp(s.WaterDosePerTapMl, 80, 400)} ml。喝完可点通知里的“我已喝完”。"),
-            ReminderType.Stand => ("站立与活动", "起身站立 2 分钟，走动一下并活动肩颈。"),
-            ReminderType.Eyes => ("护眼休息", "遵循 20-20-20：看 6 米外物体 20 秒，眨眼放松。"),
-            _ => ("健康提醒", "")
+            ReminderType.Water => (Localizer.Get("Toast_WaterTitle"), string.Format(Localizer.Get("Toast_WaterBody"), Math.Clamp(s.WaterDosePerTapMl, 80, 400))),
+            ReminderType.Stand => (Localizer.Get("Toast_StandTitle"), Localizer.Get("Toast_StandBody")),
+            ReminderType.Eyes => (Localizer.Get("Toast_EyesTitle"), Localizer.Get("Toast_EyesBody")),
+            _ => (Localizer.Get("AppTitle"), "")
         };
     }
 }
-

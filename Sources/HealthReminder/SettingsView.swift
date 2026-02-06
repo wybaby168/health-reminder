@@ -9,114 +9,114 @@ struct SettingsView: View {
             header
             permissionBanner
             Form {
-                Section("提醒项目") {
+                Section(LocalizedStringKey("settings.section.reminders")) {
                     Toggle(isOn: $model.preferences.waterEnabled) {
-                        Label("喝水提醒", systemImage: "drop.fill")
+                        Label("settings.toggle.water", systemImage: "drop.fill")
                     }
                     Toggle(isOn: $model.preferences.standEnabled) {
-                        Label("站立提醒", systemImage: "figure.stand")
+                        Label("settings.toggle.stand", systemImage: "figure.stand")
                     }
                     Toggle(isOn: $model.preferences.eyesEnabled) {
-                        Label("放松眼睛提醒", systemImage: "eye.fill")
+                        Label("settings.toggle.eyes", systemImage: "eye.fill")
                     }
                 }
 
-                Section("推荐默认（可自行调整）") {
+                Section(LocalizedStringKey("settings.section.defaults")) {
                     Stepper(value: $model.preferences.waterIntervalMinutes, in: 15...180, step: 5) {
                         HStack {
-                            Text("喝水间隔")
+                            Text("settings.stepper.waterInterval")
                             Spacer()
-                            Text("\(model.preferences.waterIntervalMinutes) 分钟")
+                            Text(LF("settings.unit.minutes", String(model.preferences.waterIntervalMinutes)))
                                 .foregroundStyle(.secondary)
                         }
                     }
                     Stepper(value: $model.preferences.standIntervalMinutes, in: 20...120, step: 5) {
                         HStack {
-                            Text("站立间隔")
+                            Text("settings.stepper.standInterval")
                             Spacer()
-                            Text("\(model.preferences.standIntervalMinutes) 分钟")
+                            Text(LF("settings.unit.minutes", String(model.preferences.standIntervalMinutes)))
                                 .foregroundStyle(.secondary)
                         }
                     }
                     Stepper(value: $model.preferences.eyesIntervalMinutes, in: 10...60, step: 5) {
                         HStack {
-                            Text("眼睛休息间隔")
+                            Text("settings.stepper.eyesInterval")
                             Spacer()
-                            Text("\(model.preferences.eyesIntervalMinutes) 分钟")
+                            Text(LF("settings.unit.minutes", String(model.preferences.eyesIntervalMinutes)))
                                 .foregroundStyle(.secondary)
                         }
                     }
                 }
 
-                Section("强制休息") {
+                Section(LocalizedStringKey("settings.section.force")) {
                     Toggle(isOn: $model.preferences.standForceOverlayEnabled) {
-                        Label("站立时全屏遮罩（至少 2 分钟）", systemImage: "rectangle.inset.filled.and.person.filled")
+                        Label("settings.toggle.forceStand", systemImage: "rectangle.inset.filled.and.person.filled")
                     }
                     Toggle(isOn: $model.preferences.eyesForceOverlayEnabled) {
-                        Label("护眼时黑屏休息（至少 20 秒）", systemImage: "moon.fill")
+                        Label("settings.toggle.forceEyes", systemImage: "moon.fill")
                     }
 
                     HStack(spacing: 10) {
                         Button {
                             model.startStandBreak()
                         } label: {
-                            Label("立即开始站立", systemImage: "figure.stand")
+                            Label("settings.button.startStand", systemImage: "figure.stand")
                         }
                         Button {
                             model.startEyesRest()
                         } label: {
-                            Label("立即开始护眼", systemImage: "eye.slash")
+                            Label("settings.button.startEyes", systemImage: "eye.slash")
                         }
                         Spacer()
                     }
                 }
 
-                Section("活跃时段") {
+                Section(LocalizedStringKey("settings.section.activeHours")) {
                     ActiveHoursPicker(
                         startMinutes: $model.preferences.activeStartMinutes,
                         endMinutes: $model.preferences.activeEndMinutes
                     )
                 }
 
-                Section("喝水用量") {
+                Section(LocalizedStringKey("settings.section.water")) {
                     Stepper(value: $model.preferences.dailyWaterGoalMl, in: 1200...4000, step: 100) {
                         HStack {
-                            Text("每日目标")
+                            Text("settings.water.goal")
                             Spacer()
-                            Text("\(model.preferences.dailyWaterGoalMl) ml")
+                            Text(LF("settings.unit.ml", String(model.preferences.dailyWaterGoalMl)))
                                 .foregroundStyle(.secondary)
                         }
                     }
 
                     Stepper(value: $model.preferences.waterDosePerTapMl, in: 80...400, step: 20) {
                         HStack {
-                            Text("每次记录")
+                            Text("settings.water.dose")
                             Spacer()
-                            Text("\(model.preferences.waterDosePerTapMl) ml")
+                            Text(LF("settings.unit.ml", String(model.preferences.waterDosePerTapMl)))
                                 .foregroundStyle(.secondary)
                         }
                     }
 
                     Stepper(value: $model.preferences.waterTapCooldownSeconds, in: 30...600, step: 30) {
                         HStack {
-                            Text("防连点间隔")
+                            Text("settings.water.cooldown")
                             Spacer()
-                            Text("\(model.preferences.waterTapCooldownSeconds) 秒")
+                            Text(LF("settings.unit.seconds", String(model.preferences.waterTapCooldownSeconds)))
                                 .foregroundStyle(.secondary)
                         }
                     }
 
                     HStack {
-                        Text("建议每次")
+                        Text("settings.water.suggested")
                         Spacer()
-                        Text("约 \(model.preferences.suggestedWaterDoseMl()) ml")
+                        Text(LF("settings.unit.ml", String(model.preferences.suggestedWaterDoseMl())))
                             .foregroundStyle(.secondary)
                     }
 
                     HStack {
-                        Text("今日已喝")
+                        Text("settings.water.today")
                         Spacer()
-                        Text("\(model.preferences.waterConsumedTodayMl) ml")
+                        Text(LF("settings.unit.ml", String(model.preferences.waterConsumedTodayMl)))
                             .foregroundStyle(.secondary)
                     }
 
@@ -126,7 +126,7 @@ struct SettingsView: View {
                                 model.snooze(.water, minutes: model.preferences.waterIntervalMinutes)
                             }
                         } label: {
-                            Label("我已喝完一杯", systemImage: "checkmark.circle.fill")
+                            Label("settings.water.button.log", systemImage: "checkmark.circle.fill")
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color(red: 0.40, green: 0.70, blue: 1.0))
@@ -135,24 +135,24 @@ struct SettingsView: View {
                     }
                 }
 
-                Section("系统") {
-                    Toggle("通知声音", isOn: $model.preferences.soundEnabled)
-                    Toggle("开机启动", isOn: Binding(
+                Section(LocalizedStringKey("settings.section.system")) {
+                    Toggle("settings.system.sound", isOn: $model.preferences.soundEnabled)
+                    Toggle(L("settings.system.launchAtLogin"), isOn: Binding(
                         get: { model.preferences.launchAtLogin },
                         set: { model.setLaunchAtLogin($0) }
                     ))
 
                     HStack {
-                        Text("通知权限")
+                        Text("settings.system.permission")
                         Spacer()
                         Text(authorizationText)
                             .foregroundStyle(.secondary)
                     }
 
                     HStack {
-                        Button("发送测试通知") { model.sendTestNotification() }
+                        Button(L("settings.system.sendTest")) { model.sendTestNotification() }
                         Spacer()
-                        Button("打开系统通知设置") { model.openSystemNotificationSettings() }
+                        Button(L("settings.system.openNotificationSettings")) { model.openSystemNotificationSettings() }
                     }
                 }
             }
@@ -164,26 +164,26 @@ struct SettingsView: View {
             await model.refreshAuthorization()
             model.setLaunchAtLogin(model.preferences.launchAtLogin)
         }
-        .alert("恢复默认设置？", isPresented: $showingResetAlert) {
-            Button("取消", role: .cancel) {}
-            Button("恢复默认", role: .destructive) {
+        .alert(L("settings.reset.alert.title"), isPresented: $showingResetAlert) {
+            Button(L("settings.reset.alert.cancel"), role: .cancel) {}
+            Button(L("settings.reset.alert.confirm"), role: .destructive) {
                 model.preferences.resetToDefaults()
             }
         } message: {
-            Text("将恢复到健康最佳实践的推荐默认值，你仍可随时再调整。")
+            Text(L("settings.reset.alert.message"))
         }
     }
 
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("设置")
+                Text("settings.title")
                     .font(.largeTitle.weight(.semibold))
-                Text("默认参考：分次补水、久坐不超过 30–60 分钟、20-20-20 规则。")
+                Text("settings.header.subtitle")
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            Button("恢复默认") {
+            Button(L("settings.reset")) {
                 showingResetAlert = true
             }
         }
@@ -193,7 +193,7 @@ struct SettingsView: View {
     private var permissionBanner: some View {
         if !model.notificationClientAvailable {
             bannerContainer {
-                Label("请用打包后的 .app 运行，才能显示通知图标并正常提醒。", systemImage: "shippingbox.fill")
+                Label(L("settings.permission.notApp"), systemImage: "shippingbox.fill")
                     .foregroundStyle(.secondary)
             }
         } else if model.authorization != .authorized {
@@ -202,18 +202,18 @@ struct SettingsView: View {
                     Image(systemName: "bell.badge.fill")
                         .foregroundStyle(.orange)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("通知权限未开启")
+                        Text("settings.permission.notGranted.title")
                             .font(.headline)
-                        Text(model.authorization == .denied ? "你已拒绝通知，请到系统设置中开启。" : "点击按钮请求通知权限。")
+                        Text(model.authorization == .denied ? L("settings.permission.notGranted.body.denied") : L("settings.permission.notGranted.body.request"))
                             .font(.callout)
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
                     if model.authorization == .denied {
-                        Button("系统设置") { model.openSystemNotificationSettings() }
+                        Button(L("banner.permission.button.settings")) { model.openSystemNotificationSettings() }
                             .buttonStyle(.bordered)
                     } else {
-                        Button("立即开启") { model.requestNotificationPermission() }
+                        Button(L("banner.permission.button.enable")) { model.requestNotificationPermission() }
                             .buttonStyle(.borderedProminent)
                             .tint(Color(red: 0.35, green: 0.86, blue: 0.73))
                     }
@@ -231,11 +231,11 @@ struct SettingsView: View {
 
     private var footer: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("小贴士")
+            Text("tips.title")
                 .font(.headline)
-            Text("喝水：多数成年人建议 1.5–2.5L/天，按口渴与尿色调整；运动/高温/咖啡因需额外补水。")
-            Text("站立：每 30–60 分钟起身走动能降低久坐相关风险；可顺便做肩颈与小腿拉伸。")
-            Text("眼睛：20-20-20 有助缓解屏幕用眼疲劳；别忘了眨眼与调整屏幕亮度。")
+            Text("tips.water")
+            Text("tips.stand")
+            Text("tips.eyes")
         }
         .font(.callout)
         .foregroundStyle(.secondary)
@@ -245,13 +245,13 @@ struct SettingsView: View {
     private var authorizationText: String {
         switch model.authorization {
         case .authorized:
-            return "已允许"
+            return L("settings.system.permission.authorized")
         case .denied:
-            return "已拒绝"
+            return L("settings.system.permission.denied")
         case .notDetermined:
-            return "未选择"
+            return L("settings.system.permission.notDetermined")
         case .unknown:
-            return "未知"
+            return L("settings.system.permission.unknown")
         }
     }
 }
@@ -263,37 +263,37 @@ private struct ActiveHoursPicker: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("当前时段")
+                Text("settings.active.current")
                 Spacer()
                 Text(summaryText)
                     .foregroundStyle(.secondary)
                     .monospacedDigit()
             }
             HStack {
-                Text("开始")
+                Text("settings.active.start")
                 Spacer()
                 DatePicker("", selection: startDate, displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .frame(maxWidth: 160, alignment: .trailing)
             }
             HStack {
-                Text("结束")
+                Text("settings.active.end")
                 Spacer()
                 DatePicker("", selection: endDate, displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .frame(maxWidth: 160, alignment: .trailing)
             }
             HStack(spacing: 8) {
-                Button("全天") { setAllDay() }
-                Button("工作日") { setRange(start: 9 * 60, end: 18 * 60) }
-                Button("日间") { setRange(start: 9 * 60, end: 21 * 60) }
-                Button("夜间") { setRange(start: 22 * 60, end: 6 * 60) }
+                Button(L("settings.active.preset.allDay")) { setAllDay() }
+                Button(L("settings.active.preset.workday")) { setRange(start: 9 * 60, end: 18 * 60) }
+                Button(L("settings.active.preset.daytime")) { setRange(start: 9 * 60, end: 21 * 60) }
+                Button(L("settings.active.preset.night")) { setRange(start: 22 * 60, end: 6 * 60) }
                 Spacer()
             }
             .buttonStyle(.bordered)
             .controlSize(.small)
 
-            Text("仅在活跃时段内发送提醒，结束早于开始表示跨夜。")
+            Text("settings.active.hint")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -315,11 +315,11 @@ private struct ActiveHoursPicker: View {
 
     private var summaryText: String {
         if startMinutes == endMinutes {
-            return "全天 · 24 小时"
+            return L("settings.active.summary.allDay")
         }
-        var text = "\(timeText(startMinutes))–\(timeText(endMinutes)) · \(durationText(activeDurationMinutes))"
+        var text = LF("settings.active.summary.format", "\(timeText(startMinutes))–\(timeText(endMinutes))", durationText(activeDurationMinutes))
         if startMinutes > endMinutes {
-            text += " · 跨夜"
+            text += " · " + L("settings.active.summary.overnight")
         }
         return text
     }
@@ -333,9 +333,9 @@ private struct ActiveHoursPicker: View {
     private func durationText(_ minutes: Int) -> String {
         let hours = minutes / 60
         let remain = minutes % 60
-        if remain == 0 { return "\(hours) 小时" }
-        if hours == 0 { return "\(remain) 分钟" }
-        return "\(hours) 小时 \(remain) 分钟"
+        if remain == 0 { return LF("settings.duration.hours", hours) }
+        if hours == 0 { return LF("settings.duration.minutes", remain) }
+        return LF("settings.duration.hoursMinutes", hours, remain)
     }
 
     private func timeText(_ minutes: Int) -> String {

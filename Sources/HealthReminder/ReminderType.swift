@@ -7,11 +7,11 @@ enum ReminderType: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var displayName: String {
+    var titleKey: String {
         switch self {
-        case .water: return "喝水"
-        case .stand: return "站立"
-        case .eyes: return "放松眼睛"
+        case .water: return "reminder.water"
+        case .stand: return "reminder.stand"
+        case .eyes: return "reminder.eyes"
         }
     }
 
@@ -23,4 +23,3 @@ enum ReminderType: String, CaseIterable, Identifiable {
         }
     }
 }
-
