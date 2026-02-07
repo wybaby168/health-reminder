@@ -17,6 +17,12 @@ public sealed class TrayIconService
     private NotifyIcon? notifyIcon;
     private ContextMenuStrip? menu;
 
+    private ToolStripMenuItem? titleItem;
+    private ToolStripMenuItem? pauseItem;
+    private ToolStripMenuItem? resumeItem;
+    private ToolStripMenuItem? settingsItem;
+    private ToolStripMenuItem? quitItem;
+
     private ToolStripMenuItem? waterStatus;
     private ToolStripMenuItem? standStatus;
     private ToolStripMenuItem? eyesStatus;
@@ -71,8 +77,8 @@ public sealed class TrayIconService
     {
         var m = new ContextMenuStrip();
 
-        var title = new ToolStripMenuItem(Localizer.Get("AppTitle")) { Enabled = false };
-        m.Items.Add(title);
+        titleItem = new ToolStripMenuItem(Localizer.Get("AppTitle")) { Enabled = false };
+        m.Items.Add(titleItem);
         m.Items.Add(new ToolStripSeparator());
 
         waterStatus = new ToolStripMenuItem(string.Format(Localizer.Get("Menu_WaterStatus"), "-", 0, 0)) { Enabled = false };
@@ -108,30 +114,31 @@ public sealed class TrayIconService
 
         m.Items.Add(new ToolStripSeparator());
 
-        var pause = new ToolStripMenuItem(Localizer.Get("Menu_Pause60"));
-        pause.Click += (_, _) => model.PauseAll(60);
-        m.Items.Add(pause);
+        pauseItem = new ToolStripMenuItem(Localizer.Get("Menu_Pause60"));
+        pauseItem.Click += (_, _) => model.PauseAll(60);
+        m.Items.Add(pauseItem);
 
-        var resume = new ToolStripMenuItem(Localizer.Get("Menu_Resume"));
-        resume.Click += (_, _) => model.ResumeAll();
-        m.Items.Add(resume);
+        resumeItem = new ToolStripMenuItem(Localizer.Get("Menu_Resume"));
+        resumeItem.Click += (_, _) => model.ResumeAll();
+        m.Items.Add(resumeItem);
 
         m.Items.Add(new ToolStripSeparator());
 
-        var settings = new ToolStripMenuItem(Localizer.Get("Menu_OpenSettings"));
-        settings.Click += (_, _) => openSettings();
-        m.Items.Add(settings);
+        settingsItem = new ToolStripMenuItem(Localizer.Get("Menu_OpenSettings"));
+        settingsItem.Click += (_, _) => openSettings();
+        m.Items.Add(settingsItem);
 
-        var quit = new ToolStripMenuItem(Localizer.Get("Menu_Quit"));
-        quit.Click += (_, _) => exit();
-        m.Items.Add(quit);
+        quitItem = new ToolStripMenuItem(Localizer.Get("Menu_Quit"));
+        quitItem.Click += (_, _) => exit();
+        m.Items.Add(quitItem);
 
         m.Opening += (_, _) =>
         {
+            ReloadLocalizedText();
             var now = DateTimeOffset.Now;
             var paused = model.Preferences.State.PauseUntil > now;
-            pause.Enabled = !paused;
-            resume.Enabled = paused;
+            if (pauseItem != null) pauseItem.Enabled = !paused;
+            if (resumeItem != null) resumeItem.Enabled = paused;
 
             var waterNext = model.Engine.NextTriggerByType.TryGetValue(ReminderType.Water, out var wn) && wn != DateTimeOffset.MinValue
                 ? wn.ToLocalTime().ToString("HH:mm")
@@ -154,6 +161,23 @@ public sealed class TrayIconService
         };
 
         return m;
+    }
+
+    public void ReloadLocalizedText()
+    {
+        if (notifyIcon != null)
+        {
+            notifyIcon.Text = Localizer.Get("AppTitle");
+        }
+        if (titleItem != null) titleItem.Text = Localizer.Get("AppTitle");
+        if (pauseItem != null) pauseItem.Text = Localizer.Get("Menu_Pause60");
+        if (resumeItem != null) resumeItem.Text = Localizer.Get("Menu_Resume");
+        if (settingsItem != null) settingsItem.Text = Localizer.Get("Menu_OpenSettings");
+        if (quitItem != null) quitItem.Text = Localizer.Get("Menu_Quit");
+
+        if (waterSnooze != null) waterSnooze.Text = Localizer.Get("Menu_WaterSnooze10");
+        if (standSnooze != null) standSnooze.Text = Localizer.Get("Menu_StandSnooze10");
+        if (eyesSnooze != null) eyesSnooze.Text = Localizer.Get("Menu_EyesSnooze10");
     }
 
     private Icon? TryLoadIcon()

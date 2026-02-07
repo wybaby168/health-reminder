@@ -9,22 +9,24 @@ struct SettingsView: View {
             header
             permissionBanner
             Form {
-                Section(LocalizedStringKey("settings.section.reminders")) {
+                Section {
                     Toggle(isOn: $model.preferences.waterEnabled) {
-                        Label("settings.toggle.water", systemImage: "drop.fill")
+                        Label(L("settings.toggle.water"), systemImage: "drop.fill")
                     }
                     Toggle(isOn: $model.preferences.standEnabled) {
-                        Label("settings.toggle.stand", systemImage: "figure.stand")
+                        Label(L("settings.toggle.stand"), systemImage: "figure.stand")
                     }
                     Toggle(isOn: $model.preferences.eyesEnabled) {
-                        Label("settings.toggle.eyes", systemImage: "eye.fill")
+                        Label(L("settings.toggle.eyes"), systemImage: "eye.fill")
                     }
+                } header: {
+                    Text(L("settings.section.reminders"))
                 }
 
-                Section(LocalizedStringKey("settings.section.defaults")) {
+                Section {
                     Stepper(value: $model.preferences.waterIntervalMinutes, in: 15...180, step: 5) {
                         HStack {
-                            Text("settings.stepper.waterInterval")
+                            Text(L("settings.stepper.waterInterval"))
                             Spacer()
                             Text(LF("settings.unit.minutes", String(model.preferences.waterIntervalMinutes)))
                                 .foregroundStyle(.secondary)
@@ -32,7 +34,7 @@ struct SettingsView: View {
                     }
                     Stepper(value: $model.preferences.standIntervalMinutes, in: 20...120, step: 5) {
                         HStack {
-                            Text("settings.stepper.standInterval")
+                            Text(L("settings.stepper.standInterval"))
                             Spacer()
                             Text(LF("settings.unit.minutes", String(model.preferences.standIntervalMinutes)))
                                 .foregroundStyle(.secondary)
@@ -40,48 +42,54 @@ struct SettingsView: View {
                     }
                     Stepper(value: $model.preferences.eyesIntervalMinutes, in: 10...60, step: 5) {
                         HStack {
-                            Text("settings.stepper.eyesInterval")
+                            Text(L("settings.stepper.eyesInterval"))
                             Spacer()
                             Text(LF("settings.unit.minutes", String(model.preferences.eyesIntervalMinutes)))
                                 .foregroundStyle(.secondary)
                         }
                     }
+                } header: {
+                    Text(L("settings.section.defaults"))
                 }
 
-                Section(LocalizedStringKey("settings.section.force")) {
+                Section {
                     Toggle(isOn: $model.preferences.standForceOverlayEnabled) {
-                        Label("settings.toggle.forceStand", systemImage: "rectangle.inset.filled.and.person.filled")
+                        Label(L("settings.toggle.forceStand"), systemImage: "rectangle.inset.filled.and.person.filled")
                     }
                     Toggle(isOn: $model.preferences.eyesForceOverlayEnabled) {
-                        Label("settings.toggle.forceEyes", systemImage: "moon.fill")
+                        Label(L("settings.toggle.forceEyes"), systemImage: "moon.fill")
                     }
 
                     HStack(spacing: 10) {
                         Button {
                             model.startStandBreak()
                         } label: {
-                            Label("settings.button.startStand", systemImage: "figure.stand")
+                            Label(L("settings.button.startStand"), systemImage: "figure.stand")
                         }
                         Button {
                             model.startEyesRest()
                         } label: {
-                            Label("settings.button.startEyes", systemImage: "eye.slash")
+                            Label(L("settings.button.startEyes"), systemImage: "eye.slash")
                         }
                         Spacer()
                     }
+                } header: {
+                    Text(L("settings.section.force"))
                 }
 
-                Section(LocalizedStringKey("settings.section.activeHours")) {
+                Section {
                     ActiveHoursPicker(
                         startMinutes: $model.preferences.activeStartMinutes,
                         endMinutes: $model.preferences.activeEndMinutes
                     )
+                } header: {
+                    Text(L("settings.section.activeHours"))
                 }
 
-                Section(LocalizedStringKey("settings.section.water")) {
+                Section {
                     Stepper(value: $model.preferences.dailyWaterGoalMl, in: 1200...4000, step: 100) {
                         HStack {
-                            Text("settings.water.goal")
+                            Text(L("settings.water.goal"))
                             Spacer()
                             Text(LF("settings.unit.ml", String(model.preferences.dailyWaterGoalMl)))
                                 .foregroundStyle(.secondary)
@@ -90,7 +98,7 @@ struct SettingsView: View {
 
                     Stepper(value: $model.preferences.waterDosePerTapMl, in: 80...400, step: 20) {
                         HStack {
-                            Text("settings.water.dose")
+                            Text(L("settings.water.dose"))
                             Spacer()
                             Text(LF("settings.unit.ml", String(model.preferences.waterDosePerTapMl)))
                                 .foregroundStyle(.secondary)
@@ -99,7 +107,7 @@ struct SettingsView: View {
 
                     Stepper(value: $model.preferences.waterTapCooldownSeconds, in: 30...600, step: 30) {
                         HStack {
-                            Text("settings.water.cooldown")
+                            Text(L("settings.water.cooldown"))
                             Spacer()
                             Text(LF("settings.unit.seconds", String(model.preferences.waterTapCooldownSeconds)))
                                 .foregroundStyle(.secondary)
@@ -107,14 +115,14 @@ struct SettingsView: View {
                     }
 
                     HStack {
-                        Text("settings.water.suggested")
+                        Text(L("settings.water.suggested"))
                         Spacer()
                         Text(LF("settings.unit.ml", String(model.preferences.suggestedWaterDoseMl())))
                             .foregroundStyle(.secondary)
                     }
 
                     HStack {
-                        Text("settings.water.today")
+                        Text(L("settings.water.today"))
                         Spacer()
                         Text(LF("settings.unit.ml", String(model.preferences.waterConsumedTodayMl)))
                             .foregroundStyle(.secondary)
@@ -126,24 +134,26 @@ struct SettingsView: View {
                                 model.snooze(.water, minutes: model.preferences.waterIntervalMinutes)
                             }
                         } label: {
-                            Label("settings.water.button.log", systemImage: "checkmark.circle.fill")
+                            Label(L("settings.water.button.log"), systemImage: "checkmark.circle.fill")
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(Color(red: 0.40, green: 0.70, blue: 1.0))
                         .disabled(!model.preferences.canLogWaterNow())
                         Spacer()
                     }
+                } header: {
+                    Text(L("settings.section.water"))
                 }
 
-                Section(LocalizedStringKey("settings.section.system")) {
-                    Toggle("settings.system.sound", isOn: $model.preferences.soundEnabled)
+                Section {
+                    Toggle(L("settings.system.sound"), isOn: $model.preferences.soundEnabled)
                     Toggle(L("settings.system.launchAtLogin"), isOn: Binding(
                         get: { model.preferences.launchAtLogin },
                         set: { model.setLaunchAtLogin($0) }
                     ))
 
                     HStack {
-                        Text("settings.system.permission")
+                        Text(L("settings.system.permission"))
                         Spacer()
                         Text(authorizationText)
                             .foregroundStyle(.secondary)
@@ -154,6 +164,8 @@ struct SettingsView: View {
                         Spacer()
                         Button(L("settings.system.openNotificationSettings")) { model.openSystemNotificationSettings() }
                     }
+                } header: {
+                    Text(L("settings.section.system"))
                 }
             }
             .formStyle(.grouped)
@@ -177,9 +189,9 @@ struct SettingsView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("settings.title")
+                Text(L("settings.title"))
                     .font(.largeTitle.weight(.semibold))
-                Text("settings.header.subtitle")
+                Text(L("settings.header.subtitle"))
                     .foregroundStyle(.secondary)
             }
             Spacer()
@@ -202,7 +214,7 @@ struct SettingsView: View {
                     Image(systemName: "bell.badge.fill")
                         .foregroundStyle(.orange)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("settings.permission.notGranted.title")
+                        Text(L("settings.permission.notGranted.title"))
                             .font(.headline)
                         Text(model.authorization == .denied ? L("settings.permission.notGranted.body.denied") : L("settings.permission.notGranted.body.request"))
                             .font(.callout)
@@ -231,11 +243,11 @@ struct SettingsView: View {
 
     private var footer: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("tips.title")
+            Text(L("tips.title"))
                 .font(.headline)
-            Text("tips.water")
-            Text("tips.stand")
-            Text("tips.eyes")
+            Text(L("tips.water"))
+            Text(L("tips.stand"))
+            Text(L("tips.eyes"))
         }
         .font(.callout)
         .foregroundStyle(.secondary)
@@ -263,21 +275,21 @@ private struct ActiveHoursPicker: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("settings.active.current")
+                Text(L("settings.active.current"))
                 Spacer()
                 Text(summaryText)
                     .foregroundStyle(.secondary)
                     .monospacedDigit()
             }
             HStack {
-                Text("settings.active.start")
+                Text(L("settings.active.start"))
                 Spacer()
                 DatePicker("", selection: startDate, displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .frame(maxWidth: 160, alignment: .trailing)
             }
             HStack {
-                Text("settings.active.end")
+                Text(L("settings.active.end"))
                 Spacer()
                 DatePicker("", selection: endDate, displayedComponents: .hourAndMinute)
                     .labelsHidden()
@@ -293,7 +305,7 @@ private struct ActiveHoursPicker: View {
             .buttonStyle(.bordered)
             .controlSize(.small)
 
-            Text("settings.active.hint")
+            Text(L("settings.active.hint"))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

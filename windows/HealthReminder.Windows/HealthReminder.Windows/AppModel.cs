@@ -19,6 +19,7 @@ public sealed class AppModel
     public void Start()
     {
         Preferences.Load();
+        LanguageService.ApplyPreference(Preferences.State.LanguagePreference);
         Engine.Start();
     }
 
@@ -66,4 +67,3 @@ public sealed class AppModel
         return true;
     }
 }
-

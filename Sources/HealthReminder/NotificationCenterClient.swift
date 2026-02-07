@@ -24,6 +24,58 @@ actor NotificationCenterClient {
         }
     }
 
+    func registerCategories() async {
+        guard let center else { return }
+
+        let snooze10 = UNNotificationAction(
+            identifier: NotificationActionID.snooze10,
+            title: L("notification.action.snooze10"),
+            options: []
+        )
+        let openSettings = UNNotificationAction(
+            identifier: NotificationActionID.openSettings,
+            title: L("notification.action.openSettings"),
+            options: [.foreground]
+        )
+
+        let waterDone = UNNotificationAction(
+            identifier: NotificationActionID.waterDone,
+            title: L("notification.action.waterDone"),
+            options: []
+        )
+        let startStand = UNNotificationAction(
+            identifier: NotificationActionID.startStand,
+            title: L("notification.action.startStand"),
+            options: [.foreground]
+        )
+        let startEyes = UNNotificationAction(
+            identifier: NotificationActionID.startEyes,
+            title: L("notification.action.startEyes"),
+            options: [.foreground]
+        )
+
+        let waterCategory = UNNotificationCategory(
+            identifier: NotificationCategoryID.water,
+            actions: [waterDone, snooze10, openSettings],
+            intentIdentifiers: [],
+            options: []
+        )
+        let standCategory = UNNotificationCategory(
+            identifier: NotificationCategoryID.stand,
+            actions: [startStand, snooze10, openSettings],
+            intentIdentifiers: [],
+            options: []
+        )
+        let eyesCategory = UNNotificationCategory(
+            identifier: NotificationCategoryID.eyes,
+            actions: [startEyes, snooze10, openSettings],
+            intentIdentifiers: [],
+            options: []
+        )
+
+        center.setNotificationCategories([waterCategory, standCategory, eyesCategory])
+    }
+
     func authorizationStatus() async -> NotificationAuthorizationState {
         guard let center else { return .unknown }
         let settings = await center.notificationSettings()

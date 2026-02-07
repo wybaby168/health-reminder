@@ -12,6 +12,7 @@ ASSETS_CAR=".build/Assets.car"
 ICON_SOURCE_PNG=".build/AppIconSource.png"
 
 swift build --disable-sandbox -c "${BUILD_CONFIGURATION}"
+BIN_DIR="$(swift build --disable-sandbox -c "${BUILD_CONFIGURATION}" --show-bin-path)"
 
 if [[ -f "${ICON_PNG}" ]]; then
   ./scripts/prepare-icon-source.sh "${ICON_PNG}" "${ICON_SOURCE_PNG}"
@@ -19,9 +20,10 @@ if [[ -f "${ICON_PNG}" ]]; then
   ./scripts/generate-appicon-assets.sh "${ICON_SOURCE_PNG}" "${ASSETS_CAR}"
 fi
 
-ARCH_DIR=".build/arm64-apple-macosx/${BUILD_CONFIGURATION}"
-BIN_PATH="${ARCH_DIR}/${PRODUCT_NAME}"
+BIN_PATH="${BIN_DIR}/${PRODUCT_NAME}"
 APP_PATH=".build/${PRODUCT_NAME}.app"
+RESOURCE_BUNDLE_NAME="${PRODUCT_NAME}_${PRODUCT_NAME}.bundle"
+RESOURCE_BUNDLE_PATH="${BIN_DIR}/${RESOURCE_BUNDLE_NAME}"
 
 if [[ ! -f "${BIN_PATH}" ]]; then
   echo "Binary not found: ${BIN_PATH}" >&2
@@ -40,6 +42,10 @@ if [[ -f "${ASSETS_CAR}" ]]; then
   cp "${ASSETS_CAR}" "${APP_PATH}/Contents/Resources/Assets.car"
 fi
 
+if [[ -d "${RESOURCE_BUNDLE_PATH}" ]]; then
+  cp -R "${RESOURCE_BUNDLE_PATH}" "${APP_PATH}/Contents/Resources/${RESOURCE_BUNDLE_NAME}"
+fi
+
 cat > "${APP_PATH}/Contents/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -47,6 +53,11 @@ cat > "${APP_PATH}/Contents/Info.plist" <<EOF
 <dict>
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>zh-Hans</string>
+  </array>
   <key>CFBundleExecutable</key>
   <string>${PRODUCT_NAME}</string>
   <key>CFBundleDisplayName</key>

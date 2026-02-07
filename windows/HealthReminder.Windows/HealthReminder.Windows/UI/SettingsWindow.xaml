@@ -57,6 +57,10 @@
                 <TextBlock x:Name="SectionSystem" FontWeight="SemiBold" />
                 <ToggleSwitch x:Name="SoundToggle" />
                 <ToggleSwitch x:Name="LaunchToggle" />
+
+                <TextBlock x:Name="LanguageLabel" Foreground="Gray" />
+                <ComboBox x:Name="LanguageCombo" SelectionChanged="OnLanguageChanged" />
+
                 <StackPanel Orientation="Horizontal" Spacing="10">
                     <Button x:Name="TestToastButton" Click="OnTestToast" />
                     <Button x:Name="ResetButton" Click="OnReset" />

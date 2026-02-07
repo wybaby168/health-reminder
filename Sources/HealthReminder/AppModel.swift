@@ -31,6 +31,7 @@ final class AppModel: ObservableObject {
 
     init() {
         AppCoordinator.shared.attach(model: self)
+
         Task { await refreshAuthorization() }
         Task { await requestAuthorizationIfNeeded() }
 

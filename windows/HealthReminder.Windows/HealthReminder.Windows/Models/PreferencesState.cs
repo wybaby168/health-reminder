@@ -30,8 +30,9 @@ public sealed class PreferencesState
 
     public bool LaunchAtLogin { get; set; } = false;
 
+    public string LanguagePreference { get; set; } = "system";
+
     public DateTimeOffset PauseUntil { get; set; } = DateTimeOffset.MinValue;
 
     public Dictionary<ReminderType, DateTimeOffset> SnoozeUntilByType { get; set; } = new();
 }
-

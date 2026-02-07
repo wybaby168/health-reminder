@@ -101,6 +101,10 @@
 
 "settings.system.sound" = "通知声音";
 "settings.system.launchAtLogin" = "开机启动";
+"settings.system.language" = "语言";
+"settings.language.system" = "跟随系统";
+"settings.language.zhHans" = "简体中文";
+"settings.language.en" = "English";
 "settings.system.permission" = "通知权限";
 "settings.system.permission.authorized" = "已允许";
 "settings.system.permission.denied" = "已拒绝";

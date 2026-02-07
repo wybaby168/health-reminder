@@ -10,6 +10,7 @@ namespace HealthReminder.Windows.UI;
 public sealed partial class SettingsWindow : Window
 {
     private readonly AppModel model;
+    private bool isApplyingLanguage;
 
     public SettingsWindow(AppModel model)
     {
@@ -61,8 +62,66 @@ public sealed partial class SettingsWindow : Window
 
         SoundToggle.Header = Localizer.Get("Settings_Sound");
         LaunchToggle.Header = Localizer.Get("Settings_Launch");
+        LanguageLabel.Text = Localizer.Get("Settings_Language");
+        ApplyLanguageCombo();
         TestToastButton.Content = Localizer.Get("Settings_TestToast");
         ResetButton.Content = Localizer.Get("Settings_Reset");
+    }
+
+    public void ReloadLocalizedText()
+    {
+        ApplyLocalization();
+        UpdateWaterUI();
+    }
+
+    private void ApplyLanguageCombo()
+    {
+        isApplyingLanguage = true;
+        try
+        {
+            LanguageCombo.Items.Clear();
+
+            LanguageCombo.Items.Add(new ComboBoxItem { Content = Localizer.Get("Language_System"), Tag = "system" });
+            LanguageCombo.Items.Add(new ComboBoxItem { Content = Localizer.Get("Language_ZhCN"), Tag = "zh-CN" });
+            LanguageCombo.Items.Add(new ComboBoxItem { Content = Localizer.Get("Language_EnUS"), Tag = "en-US" });
+
+            var current = string.IsNullOrWhiteSpace(model.Preferences.State.LanguagePreference) ? "system" : model.Preferences.State.LanguagePreference;
+            foreach (var item in LanguageCombo.Items)
+            {
+                if (item is ComboBoxItem cbi && string.Equals(cbi.Tag?.ToString(), current, StringComparison.OrdinalIgnoreCase))
+                {
+                    LanguageCombo.SelectedItem = cbi;
+                    break;
+                }
+            }
+
+            if (LanguageCombo.SelectedItem == null && LanguageCombo.Items.Count > 0)
+            {
+                LanguageCombo.SelectedIndex = 0;
+            }
+        }
+        finally
+        {
+            isApplyingLanguage = false;
+        }
+    }
+
+    private void OnLanguageChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (isApplyingLanguage)
+        {
+            return;
+        }
+        if (LanguageCombo.SelectedItem is not ComboBoxItem item)
+        {
+            return;
+        }
+        var pref = item.Tag?.ToString() ?? "system";
+        model.Preferences.State.LanguagePreference = pref;
+        model.Preferences.Save();
+        LanguageService.ApplyPreference(pref);
+        ApplyLocalization();
+        App.RequestReloadStrings();
     }
 
     public void BringToFront()

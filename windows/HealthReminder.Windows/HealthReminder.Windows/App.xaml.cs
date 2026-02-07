@@ -64,4 +64,16 @@ public sealed partial class App : Application
         Model.Stop();
         Environment.Exit(0);
     }
+
+    public static void RequestReloadStrings()
+    {
+        UiDispatcher?.TryEnqueue(() =>
+        {
+            if (Current is App app)
+            {
+                app.tray?.ReloadLocalizedText();
+                app.settingsWindow?.ReloadLocalizedText();
+            }
+        });
+    }
 }

@@ -4,12 +4,16 @@ namespace HealthReminder.Windows.Services;
 
 public static class Localizer
 {
-    private static readonly ResourceLoader Loader = ResourceLoader.GetForViewIndependentUse();
+    private static ResourceLoader loader = ResourceLoader.GetForViewIndependentUse();
 
     public static string Get(string key)
     {
-        var value = Loader.GetString(key);
+        var value = loader.GetString(key);
         return string.IsNullOrWhiteSpace(value) ? key : value;
     }
-}
 
+    public static void Reload()
+    {
+        loader = ResourceLoader.GetForViewIndependentUse();
+    }
+}

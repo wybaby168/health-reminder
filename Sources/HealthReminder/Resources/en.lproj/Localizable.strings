@@ -101,6 +101,10 @@
 
 "settings.system.sound" = "Notification sound";
 "settings.system.launchAtLogin" = "Launch at login";
+"settings.system.language" = "Language";
+"settings.language.system" = "Follow system";
+"settings.language.zhHans" = "Chinese (Simplified)";
+"settings.language.en" = "English";
 "settings.system.permission" = "Notification permission";
 "settings.system.permission.authorized" = "Allowed";
 "settings.system.permission.denied" = "Denied";

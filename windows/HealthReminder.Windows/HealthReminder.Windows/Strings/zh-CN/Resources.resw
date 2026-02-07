@@ -140,6 +140,18 @@
   <data name="Settings_Launch" xml:space="preserve">
     <value>开机启动（需要 MSIX 打包）</value>
   </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Language_System" xml:space="preserve">
+    <value>跟随系统</value>
+  </data>
+  <data name="Language_ZhCN" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="Language_EnUS" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="Settings_TestToast" xml:space="preserve">
     <value>发送测试通知</value>
   </data>

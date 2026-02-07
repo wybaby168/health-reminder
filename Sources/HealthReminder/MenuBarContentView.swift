@@ -33,7 +33,7 @@ struct MenuBarContentView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "alarm.fill")
                         .foregroundStyle(Color(red: 0.35, green: 0.86, blue: 0.73))
-                    Text("app.title")
+                    Text(L("app.title"))
                         .font(.headline)
                 }
                 Text(subtitle)
@@ -59,9 +59,9 @@ struct MenuBarContentView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundStyle(.yellow)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("banner.notApp.title")
+                        Text(L("banner.notApp.title"))
                             .font(.subheadline.weight(.semibold))
-                        Text("banner.notApp.body")
+                        Text(L("banner.notApp.body"))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -74,7 +74,7 @@ struct MenuBarContentView: View {
                     Image(systemName: "bell.badge.fill")
                         .foregroundStyle(.orange)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("banner.permission.title")
+                        Text(L("banner.permission.title"))
                             .font(.subheadline.weight(.semibold))
                         Text(model.authorization == .denied ? L("banner.permission.body.denied") : L("banner.permission.body.request"))
                             .font(.caption)
@@ -192,7 +192,7 @@ private struct ReminderStatusRow: View {
                 .font(.system(size: 16))
                 .frame(width: 18, height: 18)
             VStack(alignment: .leading, spacing: 2) {
-                Text(LocalizedStringKey(type.titleKey))
+                Text(L(type.titleKey))
                     .font(.subheadline)
                 Text(detail)
                     .font(.caption)
