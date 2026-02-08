@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PRIResource Include="Strings\**\*.resw" />
-  </ItemGroup>
-
-  <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
     <Content Include="..\..\..\icons\app-icon.png" Link="Assets\AppIcon.png" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
